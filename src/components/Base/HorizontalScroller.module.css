@@ -1,0 +1,24 @@
+.scroller {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  padding-bottom: 10px;
+
+  width: 100%;
+  max-width: var(--maxPrimaryPageWidth, 1400px);
+  min-height: auto;
+  transition: height 0.5s linear;
+}
+
+.flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.leaded {
+  min-height: 0;
+  height: auto;
+}

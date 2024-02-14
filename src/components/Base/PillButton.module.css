@@ -1,0 +1,39 @@
+.xs {
+  --button-radius: 15px;
+}
+
+.sm {
+  --button-radius: 18px;
+}
+
+.md {
+  --button-radius: 21px;
+}
+
+.lg {
+  --button-radius: 25px;
+}
+
+.xl {
+  --button-radius: 30px;
+}
+
+.compactxs {
+  --button-radius: 11px;
+}
+
+.compactsm {
+  --button-radius: 13px;
+}
+
+.compactmd {
+  --button-radius: 15px;
+}
+
+.compactlg {
+  --button-radius: 17px;
+}
+
+.compactxl {
+  --button-radius: 20px;
+}

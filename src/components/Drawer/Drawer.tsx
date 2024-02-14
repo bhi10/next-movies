@@ -1,14 +1,7 @@
 'use client';
 
 import { Stack, useComputedColorScheme, useMantineColorScheme } from '@mantine/core';
-import {
-  IconDeviceTv,
-  IconHome2,
-  IconMoon,
-  IconMovie,
-  IconSun,
-  IconUsers,
-} from '@tabler/icons-react';
+import { IconDeviceTv, IconHome2, IconMoon, IconMovie, IconSun, IconUsers } from '@tabler/icons-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import classes from './Drawer.module.css';
@@ -42,14 +35,8 @@ export default function Drawer() {
   };
 
   const links = drawerItems.map((item, index) => (
-    <Link href={item.href}>
-      <DrawerLink
-        key={index}
-        icon={item.icon}
-        label={item.label}
-        active={index === active}
-        onClick={() => onItemClick(item, index)}
-      ></DrawerLink>
+    <Link href={item.href} key={index}>
+      <DrawerLink icon={item.icon} label={item.label} active={index === active} onClick={() => onItemClick(item, index)}></DrawerLink>
     </Link>
   ));
 

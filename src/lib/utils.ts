@@ -1,6 +1,8 @@
-import { apiImgUrl } from "./api";
+import { ImageWidthSizes } from '@app/types';
+import { apiImgUrl } from './api';
 
-export const getImgPath = (path: string, widthSize: ImageWidthSizes = 'original'): string => {
+export const getImgPath = (path: string | null, widthSize: ImageWidthSizes = 'original'): string => {
+  if (!path) return '';
   return apiImgUrl + '/' + widthSize + path;
 };
 
@@ -10,7 +12,7 @@ export const getYearFromDate = (dateString: string): number | string => {
 
   // Check if the date is valid
   if (isNaN(dateObject.getTime())) {
-      return "Invalid date";
+    return 'Invalid date';
   }
 
   // Get the year from the Date object

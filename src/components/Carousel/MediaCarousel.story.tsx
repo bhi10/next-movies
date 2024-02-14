@@ -38,8 +38,7 @@ export const Default: Story = {
         title: 'Oppenheimer',
         original_language: 'en',
         original_title: 'Oppenheimer',
-        overview:
-          "The story of J. Robert Oppenheimer's role in the development of the atomic bomb during World War II.",
+        overview: "The story of J. Robert Oppenheimer's role in the development of the atomic bomb during World War II.",
         poster_path: '/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg',
         media_type: 'movie',
         genre_ids: [18, 36],
