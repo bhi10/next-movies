@@ -1,3 +1,17 @@
+import {
+  GenreList,
+  Media,
+  MediaType,
+  MoviesImages,
+  PageResult,
+  People,
+  ProviderResult,
+  Query,
+  QueryItem,
+  Region,
+  Season,
+  TrendingMedia,
+} from '@app/types';
 import axios from 'axios';
 import { cache } from 'react';
 
@@ -18,13 +32,10 @@ export const lists = {
     { title: 'Currently Airing TV Shows', query: 'on_the_air', type: 'tv' },
     { title: 'TV Shows Airing Today', query: 'airing_today', type: 'tv' },
   ],
-  all: <QueryItem[]>[
-    { title: 'Trending Movies and TV Shows', query: 'trending', type: 'all'}
-  ]
+  all: <QueryItem[]>[{ title: 'Trending Movies and TV Shows', query: 'trending', type: 'all' }],
 };
 
-export const getListItem = (type: MediaType = 'all', query: Query) =>
-  lists[type].find((item) => item.query === query);
+export const getListItem = (type: MediaType = 'all', query: Query) => lists[type].find(item => item.query === query);
 
 export const api = axios.create({
   baseURL: apiUrl,
@@ -36,14 +47,14 @@ export const api = axios.create({
 export const fetchApi = cache((url: string, params?: any) =>
   api
     .get(url, { params })
-    .then((res) => res.data)
-    .catch((err) => {
+    .then(res => res.data)
+    .catch(err => {
       throw err;
     })
 );
 
 export const getMedia = cache(
-  (type: MediaType, id: string): Promise<Media> =>
+  (type: MediaType, id: string | number): Promise<Media> =>
     fetchApi(`/${type}/${id}`, {
       append_to_response: 'credits,images,videos,recommendations,episodes',
       include_image_language: 'en',
@@ -57,21 +68,16 @@ export const getRandomMedia = cache((items: Media[]): Promise<Media> => {
   return getMedia(randomItemType, randomItem.id);
 });
 
-export const getMediaEpisodes = cache(
-  (id: string, season: number): Promise<Season> => fetchApi(`/tv/${id}/season/${season}`)
-);
+export const getMediaEpisodes = cache((id: string, season: number): Promise<Season> => fetchApi(`/tv/${id}/season/${season}`));
 
-export const getPerson = cache(
-  (id: string): Promise<Person> =>
+export const getPeople = cache(
+  (id: string): Promise<People> =>
     fetchApi(`/person/${id}`, {
       append_to_response: 'combined_credits,images',
     })
 );
 
-export const getSearch = (
-  query: string,
-  page?: number | string
-): Promise<PageResult<Media & Person>> =>
+export const getSearch = (query: string, page?: number | string): Promise<PageResult<Media & People>> =>
   fetchApi('/search/multi', {
     query,
     page,
@@ -91,9 +97,7 @@ export const getQuery = cache(
     })
 );
 
-export const getGenreList = cache(
-  (type: MediaType): Promise<GenreList> => fetchApi(`/genre/${type}/list`)
-);
+export const getGenreList = cache((type: MediaType): Promise<GenreList> => fetchApi(`/genre/${type}/list`));
 
 export const getGenre = cache(
   (type: MediaType, id: number, page?: number | string): Promise<PageResult<Media>> =>
@@ -103,11 +107,8 @@ export const getGenre = cache(
     })
 );
 
-export const getAvailableRegions = cache(
-  (): Promise<PageResult<Region>> => fetchApi(`/watch/providers/regions`)
-);
+export const getAvailableRegions = cache((): Promise<PageResult<Region>> => fetchApi(`/watch/providers/regions`));
 
-export const getProviders = cache(
-  (type: MediaType, id: string): Promise<ProviderResult> =>
-    fetchApi(`/${type}/${id}/watch/providers`)
-);
+export const getProviders = cache((type: MediaType, id: string): Promise<ProviderResult> => fetchApi(`/${type}/${id}/watch/providers`));
+
+export const getImages = cache((type: MediaType, id: string): Promise<MoviesImages> => fetchApi(`/${type}/${id}/images`));

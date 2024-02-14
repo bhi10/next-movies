@@ -1,9 +1,10 @@
+import { TrendingMedia } from '@app/types';
 import { getImgPath } from '@lib/utils';
-import { Button, Paper, Text, Title } from '@mantine/core';
-import classes from './MediaCarousel.module.css';
+import { Paper, Text, Title } from '@mantine/core';
 import Link from 'next/link';
+import classes from './MediaCard.module.css';
 
-export default function MediaCarousel({ media }: { media: TrendingMedia }) {
+export default function MediaCard({ media }: { media: TrendingMedia }) {
   return (
     <Link className="remove-text-decoration" href={`${media.media_type}/${media.id}`}>
       <Paper
@@ -26,9 +27,6 @@ export default function MediaCarousel({ media }: { media: TrendingMedia }) {
             {media.media_type === 'movie' ? media.title : media.name}
           </Title>
         </div>
-        <Button variant="white" color="dark">
-          Read article
-        </Button>
       </Paper>
     </Link>
   );

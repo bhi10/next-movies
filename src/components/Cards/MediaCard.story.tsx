@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import MediaCarouselCard from './MediaCarouselCard';
+import MediaCard from './MediaCard';
 
-const meta: Meta<typeof MediaCarouselCard> = {
-  component: MediaCarouselCard,
+const meta: Meta<typeof MediaCard> = {
+  component: MediaCard,
 };
 
 export default meta;
 
-type Story = StoryObj<typeof MediaCarouselCard>;
+type Story = StoryObj<typeof MediaCard>;
 
 export const Default: Story = {
   args: {
