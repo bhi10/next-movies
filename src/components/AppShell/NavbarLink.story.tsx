@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { IconHome2 } from '@tabler/icons-react';
-import DrawerLink from './DrawerLink';
+import NavbarLink from './NavbarLink';
 
-const meta: Meta<typeof DrawerLink> = {
-  component: DrawerLink,
+const meta: Meta<typeof NavbarLink> = {
+  component: NavbarLink,
   argTypes: { onClick: { action: 'clicked' } }
 };
 
 export default meta;
 
-type Story = StoryObj<typeof DrawerLink>;
+type Story = StoryObj<typeof NavbarLink>;
 
 export const Default: Story = {
   args: {

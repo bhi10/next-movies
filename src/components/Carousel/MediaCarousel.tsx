@@ -8,7 +8,7 @@ interface MediaCarouselProps {
   trending: TrendingMedia[];
 }
 
-export default function MediaCarousel({ trending }: MediaCarouselProps) {
+export default function MediaCarousel({ trending = [] }: MediaCarouselProps) {
   const slides = trending.map((media, index) => (
     <Carousel.Slide key={index}>
       <MediaCard media={media} />
