@@ -8,7 +8,7 @@ import { getImgPath, getYearFromDate } from '@lib/utils';
 import { Container, Flex, Text, Title } from '@mantine/core';
 import classes from './page.module.css';
 
-export default function Header({ mediaType = 'movie', media }: { mediaType: MediaType; media: Media }) {
+function BasicInfo({ mediaType = 'movie', media }: { mediaType: MediaType; media: Media }) {
   const title = mediaType === 'movie' ? media.title : media.name;
   const releaseDate = mediaType === 'movie' ? media.release_date : media.first_air_date;
   const year = ` (${getYearFromDate(releaseDate || '')})`;
@@ -54,15 +54,13 @@ export default function Header({ mediaType = 'movie', media }: { mediaType: Medi
           </Text>
         )}
 
-        <Title order={4} mt={8}>
-          Overview
-        </Title>
-        <Text size="" mt={4}>
-          {media.overview}
-        </Text>
+        <FieldView styles={{ marginTop: '20px' }} label="Overview" value={media.overview} dark></FieldView>
 
-        {director && <FieldView styles={{ marginTop: '20px' }} label={director.job} value={director.name}></FieldView>}
+        {director && <FieldView styles={{ marginTop: '20px' }} label={director.job} value={director.name} dark></FieldView>}
       </div>
     </Container>
   );
 }
+
+
+export default BasicInfo

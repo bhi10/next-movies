@@ -48,9 +48,9 @@ const genreColorMap: GenreColorMap = {
 };
 
 export default function GenreChipList({ genres = [] }: GenreChipListProps) {
-  const list = genres.map((genre: Genre) => {
+  const list = genres.map((genre: Genre, index: number) => {
     const color = genreColorMap[genre.id];
-    return <GenreChip id={genre.id} name={genre.name} color={color}></GenreChip>;
+    return <GenreChip key={index} id={genre.id} name={genre.name} color={color}></GenreChip>;
   });
 
   return (

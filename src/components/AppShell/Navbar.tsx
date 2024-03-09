@@ -4,28 +4,28 @@ import { Stack, useComputedColorScheme, useMantineColorScheme } from '@mantine/c
 import { IconDeviceTv, IconHome2, IconMoon, IconMovie, IconSun, IconUsers } from '@tabler/icons-react';
 import Link from 'next/link';
 import { useState } from 'react';
-import classes from './Drawer.module.css';
-import DrawerLink from './DrawerLink';
+import classes from './Navbar.module.css';
+import NavbarLink from './NavbarLink';
 
-interface DrawerItems {
+interface NavbarItems {
   icon: typeof IconHome2;
   label: string;
   href: string;
 }
 
-const drawerItems: DrawerItems[] = [
+const drawerItems: NavbarItems[] = [
   { icon: IconHome2, label: 'Home', href: '/' },
   { icon: IconMovie, label: 'Movies', href: '/movies' },
   { icon: IconDeviceTv, label: 'TV Shows', href: '/tv' },
   { icon: IconUsers, label: 'People', href: '/people' },
 ];
 
-export default function Drawer() {
+export default function Navbar() {
   const [active, setActive] = useState(0);
   const { setColorScheme } = useMantineColorScheme();
   const computedColorScheme = useComputedColorScheme('light', { getInitialValueInEffect: true });
 
-  const onItemClick = (item: DrawerItems, index: number) => {
+  const onItemClick = (item: NavbarItems, index: number) => {
     setActive(index);
   };
 
@@ -36,7 +36,7 @@ export default function Drawer() {
 
   const links = drawerItems.map((item, index) => (
     <Link href={item.href} key={index}>
-      <DrawerLink icon={item.icon} label={item.label} active={index === active} onClick={() => onItemClick(item, index)}></DrawerLink>
+      <NavbarLink icon={item.icon} label={item.label} active={index === active} onClick={() => onItemClick(item, index)}></NavbarLink>
     </Link>
   ));
 
@@ -49,7 +49,7 @@ export default function Drawer() {
       </div>
 
       <Stack justify="center" gap={0}>
-        <DrawerLink
+        <NavbarLink
           icon={computedColorScheme === 'light' ? IconMoon : IconSun}
           label={computedColorScheme === 'light' ? 'Dark' : 'Light'}
           onClick={onThemeChange}
