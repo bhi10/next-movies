@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  padding: 16px;
+}
+
+.headerDetail {
+  padding-left: 40px;
+  flex: 1;
+}

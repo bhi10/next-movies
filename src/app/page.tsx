@@ -1,12 +1,9 @@
-import MediaCarousel from '@components/Carousel/MediaCarousel';
-import { getTrending } from '@lib/api';
+import TrendingMediaCarousel from '@/components/Pages/Home/TrendingMediaCarousel';
 
 export default async function HomePage() {
-  const trending = await getTrending();
-
   return (
-    <div>
-      <MediaCarousel trending={trending.results} />
-    </div>
+    <>
+      <TrendingMediaCarousel />
+    </>
   );
 }

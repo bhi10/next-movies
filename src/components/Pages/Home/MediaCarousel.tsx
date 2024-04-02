@@ -1,10 +1,13 @@
 'use client';
 
-import { TrendingMedia } from '@app/types';
+import { getTrending, trendingList } from '@lib/features/trendingSlice';
+import { useAppDispatch, useAppSelector } from '@lib/hooks';
 import { Carousel } from '@mantine/carousel';
-import MediaCard from '../Cards/MediaCard';
+import { useEffect } from 'react';
+import MediaCard from '../../Cards/MediaCard';
+import { TrendingMedia } from '@app/types';
 
-interface MediaCarouselProps {
+export interface MediaCarouselProps {
   trending: TrendingMedia[];
 }
 

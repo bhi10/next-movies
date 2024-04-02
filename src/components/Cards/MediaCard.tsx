@@ -12,9 +12,8 @@ export default function MediaCard({ media }: { media: TrendingMedia }) {
         p="xl"
         radius="md"
         style={{
-          backgroundImage: `linear-gradient(0deg, rgba(15,15,15,0.8057816876750701) 0%, rgba(25,24,24,0.7217480742296919) 18%, rgba(255,255,255,0) 100%), 
-            linear-gradient(180deg, rgba(15,15,15,0.8057816876750701) 0%, rgba(14,14,14,0.3828125) 17%, rgba(18,17,17,0) 100%),
-            url(${getImgPath(media.backdrop_path)})`,
+          backgroundImage: `linear-gradient(180deg, rgba(15,15,15,0.14) 0%, rgba(18,17,17,0.71) 100%),
+            url(${getImgPath(media.backdrop_path, 'w1066_and_h600_bestv2')})`,
           backgroundSize: 'cover',
         }}
         className={classes.card}
