@@ -11,7 +11,6 @@ function PersonCreditCarousel({ credits, gap = 'md' }: PersonCreditCarouselProps
   if (!credits) return '';
 
   const filteredCasts = credits.filter(credit => credit.poster_path);
-  console.log(filteredCasts);
 
   const slides = filteredCasts.map((credit, index) => (
     <PeopleCreditCard
