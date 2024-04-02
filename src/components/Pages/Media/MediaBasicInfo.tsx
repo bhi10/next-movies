@@ -7,6 +7,7 @@ import Poster from '@/components/Cards/Poster';
 import { getImgPath, getYearFromDate } from '@lib/utils';
 import { Container, Flex, Text, Title } from '@mantine/core';
 import classes from './MediaBasicInfo.module.css';
+import Link from 'next/link';
 
 export interface MediaBasicInfoProps {
   mediaType: MediaType;
@@ -65,7 +66,11 @@ function MediaBasicInfo({ mediaType = 'movie', media }: MediaBasicInfoProps) {
 
         <FieldView styles={{ marginTop: '20px' }} label="Overview" value={media.overview} dark></FieldView>
 
-        {director && <FieldView styles={{ marginTop: '20px' }} label={director.job} value={director.name} dark></FieldView>}
+        {director && (
+          <Link className="remove-text-decoration" href={`/people/${director.id}`}>
+            <FieldView styles={{ marginTop: '20px' }} label={director.job} value={director.name} dark></FieldView>
+          </Link>
+        )}
       </div>
     </Container>
   );
