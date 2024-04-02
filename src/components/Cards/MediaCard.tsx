@@ -13,7 +13,7 @@ export default function MediaCard({ media }: { media: TrendingMedia }) {
         radius="md"
         style={{
           backgroundImage: `linear-gradient(180deg, rgba(15,15,15,0.14) 0%, rgba(18,17,17,0.71) 100%),
-            url(${getImgPath(media.backdrop_path)})`,
+            url(${getImgPath(media.backdrop_path, 'w1066_and_h600_bestv2')})`,
           backgroundSize: 'cover',
         }}
         className={classes.card}

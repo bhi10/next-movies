@@ -225,10 +225,7 @@ export interface People {
   homepage?: string | null;
   biography?: string;
   external_ids?: ExternalIds;
-  combined_credits?: {
-    cast?: Credit[];
-    crew?: Credit[];
-  };
+  combined_credits?: CombinedCredits;
   images?: {
     profiles: Image[];
   };
@@ -368,6 +365,61 @@ interface ProviderItem {
   flatrate?: Provider[];
   rent?: Provider[];
   buy?: Provider[];
+}
+
+export interface CombinedCreditsCast {
+  adult: boolean;
+  backdrop_path: string | null;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string | null;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+  character: string;
+  credit_id: string;
+  order: number;
+  media_type: 'movie' | 'tv';
+  origin_country?: string[];
+  original_name?: string;
+  first_air_date?: string;
+  namets?: number;
+  name?: string;
+  episode_count?: number;
+  orders?: number;
+}
+
+export interface CombinedCreditsCrew {
+  adult: boolean;
+  backdrop_path: string | null;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string | null;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+  credit_id: string;
+  department: string;
+  job: string;
+  media_type: string;
+}
+
+export interface CombinedCredits {
+  cast: CombinedCreditsCast[];
+  crew: CombinedCreditsCrew[];
+  id: number;
 }
 
 export type ImageWidthSizes =

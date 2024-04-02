@@ -3,3 +3,25 @@
   flex-direction: column;
   box-sizing: border-box;
 }
+
+.read_more {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  bottom: 2px;
+  left: 0;
+  z-index: 2;
+  height: 22px;
+}
+
+.anchor {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  font-weight: 600;
+  height: 22px;
+  text-decoration: none;
+  color: var(--mantine-color-blue-filled);
+  cursor: pointer;
+}

@@ -6,9 +6,18 @@ import { directorDetails, formatMovieDuration } from '@/utils/common-utils';
 import Poster from '@/components/Cards/Poster';
 import { getImgPath, getYearFromDate } from '@lib/utils';
 import { Container, Flex, Text, Title } from '@mantine/core';
-import classes from './page.module.css';
+import classes from './MediaBasicInfo.module.css';
 
-function BasicInfo({ mediaType = 'movie', media }: { mediaType: MediaType; media: Media }) {
+export interface MediaBasicInfoProps {
+  mediaType: MediaType;
+  media: Media | undefined;
+}
+
+function MediaBasicInfo({ mediaType = 'movie', media }: MediaBasicInfoProps) {
+  if (!media) {
+    return '';
+  }
+
   const title = mediaType === 'movie' ? media.title : media.name;
   const releaseDate = mediaType === 'movie' ? media.release_date : media.first_air_date;
   const year = ` (${getYearFromDate(releaseDate || '')})`;
@@ -26,7 +35,7 @@ function BasicInfo({ mediaType = 'movie', media }: { mediaType: MediaType; media
         backgroundSize: 'cover',
       }}
     >
-      <Poster mediaType={mediaType} media={media}></Poster>
+      <Poster poster_path={media.poster_path} title={mediaType === 'movie' ? media.title : media.name}></Poster>
       <div className={classes.headerDetail}>
         <Flex>
           <Title order={2} className={classes.title}>
@@ -62,5 +71,4 @@ function BasicInfo({ mediaType = 'movie', media }: { mediaType: MediaType; media
   );
 }
 
-
-export default BasicInfo
+export default MediaBasicInfo;

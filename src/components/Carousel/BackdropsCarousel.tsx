@@ -6,10 +6,12 @@ import { Carousel } from '@mantine/carousel';
 import { Image } from '@mantine/core';
 
 interface BackdropsCarouselProps {
-  backdrops: ImageObject[];
+  backdrops: ImageObject[] | undefined;
 }
 
 export default function BackdropsCarousel({ backdrops }: BackdropsCarouselProps) {
+  if (!backdrops) return '';
+
   const slides = backdrops.map((backdrop, index) => {
     const imagePath = getImgPath(backdrop.file_path, 'w1066_and_h600_bestv2');
     return (
