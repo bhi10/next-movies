@@ -1,8 +1,8 @@
-import { People } from "@/app/types";
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchApi } from "../api";
-import { createAppSlice } from "../createAppSlice";
-import { RootState } from "../store";
+import { People } from '@/app/types';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { fetchApi } from '../api';
+import { createAppSlice } from '../createAppSlice';
+import { RootState } from '../store';
 
 export interface PeopleSliceState {
   detail: People | undefined;
@@ -11,19 +11,19 @@ export interface PeopleSliceState {
 
 const initialState: PeopleSliceState = {
   detail: undefined,
-  status: 'success'
+  status: 'success',
 };
 
 export const getPeople = createAsyncThunk('people', async (id: string | number) => {
   try {
     const people = await fetchApi(`/person/${id}`, {
-      append_to_response: 'combined_credits,images',
+      append_to_response: 'combined_credits,images,external_ids',
     });
     return people;
   } catch (error) {
     console.log(error);
   }
-})
+});
 
 export const peopleSlice = createAppSlice({
   name: 'people',
@@ -45,7 +45,7 @@ export const peopleSlice = createAppSlice({
         state.detail = undefined;
       });
   },
-})
+});
 
 export const peopleDetail = (state: RootState) => state.people.detail;
 

@@ -259,25 +259,32 @@ interface Video {
   id: string;
 }
 
-interface Image {
+export interface Image {
   aspect_ratio: number;
   height: number;
-  iso_639_1: string;
+  iso_639_1: string | null;
   file_path: string;
   vote_average: number;
   vote_count: number;
   width: number;
 }
 
-interface ExternalIds {
+export interface ExternalIds {
+  id?: number;
   imdb_id?: string;
-  facebook_id?: string;
+  facebook_id?: string | null;
   instagram_id?: string;
   twitter_id?: string;
   linkedin_id?: string;
   github_id?: string;
   email?: string;
   homepage?: string;
+  freebase_mid?: string;
+  freebase_id?: string | null;
+  tvrage_id?: string | number | null;
+  wikidata_id?: string;
+  tiktok_id?: string | null;
+  youtube_id?: string | null;
 }
 
 export interface PageResult<T> {
@@ -369,22 +376,22 @@ interface ProviderItem {
 
 export interface CombinedCreditsCast {
   adult: boolean;
-  backdrop_path: string | null;
-  genre_ids: number[];
+  backdrop_path?: string | null;
+  genre_ids?: number[];
   id: number;
   original_language: string;
-  original_title: string;
+  original_title?: string;
   overview: string;
   popularity: number;
   poster_path: string | null;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-  character: string;
-  credit_id: string;
-  order: number;
+  release_date?: string;
+  title?: string;
+  video?: boolean;
+  vote_average?: number;
+  vote_count?: number;
+  character?: string;
+  credit_id?: string;
+  order?: number;
   media_type: 'movie' | 'tv';
   origin_country?: string[];
   original_name?: string;
@@ -401,25 +408,30 @@ export interface CombinedCreditsCrew {
   genre_ids: number[];
   id: number;
   original_language: string;
-  original_title: string;
+  original_title?: string;
   overview: string;
   popularity: number;
   poster_path: string | null;
-  release_date: string;
-  title: string;
-  video: boolean;
+  release_date?: string;
+  title?: string;
+  video?: boolean;
   vote_average: number;
   vote_count: number;
   credit_id: string;
   department: string;
   job: string;
   media_type: string;
+  origin_country?: string[];
+  original_name?: string;
+  first_air_date?: string;
+  name?: string;
+  episode_count?: number;
 }
 
 export interface CombinedCredits {
   cast: CombinedCreditsCast[];
   crew: CombinedCreditsCrew[];
-  id: number;
+  id?: number;
 }
 
 export type ImageWidthSizes =
@@ -437,4 +449,5 @@ export type ImageWidthSizes =
   | 'h632'
   | 'w600_and_h900_bestv2'
   | 'w138_and_h175_face'
-  | 'w1066_and_h600_bestv2';
+  | 'w1066_and_h600_bestv2'
+  | 'w150_and_h225_bestv2';

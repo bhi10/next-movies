@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { logo } from '@/utils/constants';
 import { Burger, Container, Image } from '@mantine/core';

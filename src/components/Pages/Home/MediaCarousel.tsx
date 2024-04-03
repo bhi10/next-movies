@@ -1,11 +1,8 @@
 'use client';
 
-import { getTrending, trendingList } from '@lib/features/trendingSlice';
-import { useAppDispatch, useAppSelector } from '@lib/hooks';
-import { Carousel } from '@mantine/carousel';
-import { useEffect } from 'react';
-import MediaCard from '../../Cards/MediaCard';
 import { TrendingMedia } from '@app/types';
+import { Carousel } from '@mantine/carousel';
+import MediaCard from '../../Cards/MediaCard';
 
 export interface MediaCarouselProps {
   trending: TrendingMedia[];
@@ -18,7 +15,7 @@ export default function MediaCarousel({ trending }: MediaCarouselProps) {
     </Carousel.Slide>
   ));
   return (
-    <Carousel slideSize="70%" height={500} slideGap="xs" loop>
+    <Carousel slideSize={{ base: '100%', xl: '50%', lg: '60%', md: '80%', sm: '90%', xs: '100%' }} height={500} slideGap="xs" loop dragFree>
       {slides}
     </Carousel>
   );

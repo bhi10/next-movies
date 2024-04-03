@@ -1,7 +1,7 @@
 'use client';
 
-import { getImgPath } from '@lib/utils';
 import { Card, Image } from '@mantine/core';
+import { getImgPath } from '@utils/common-utils';
 import classes from './Poster.module.css';
 
 export interface PosterProps {

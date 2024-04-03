@@ -12,12 +12,9 @@ import {
   Season,
   TrendingMedia,
 } from '@app/types';
+import { apiKey, apiUrl } from '@utils/constants';
 import axios from 'axios';
 import { cache } from 'react';
-
-export const apiKey = '6b773e1f59009e9d5efc06c47c2ccd9c';
-export const apiUrl = 'https://api.themoviedb.org/3';
-export const apiImgUrl = 'https://image.tmdb.org/t/p';
 
 export const lists = {
   movie: <QueryItem[]>[

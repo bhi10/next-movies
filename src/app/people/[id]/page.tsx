@@ -1,10 +1,11 @@
 'use client';
 
-import PersonCreditCarousel from '@/components/Carousel/PeopleCreditCarousel';
+import PersonCreditCarousel from '@components/Carousel/PeopleCreditCarousel';
+import ProfilesCarousel from '@components/Carousel/ProfilesCarousel';
 import PeopleBasicInfo from '@components/Pages/People/PeopleBasicInfo';
 import { getPeople, peopleDetail } from '@lib/features/peopleSlice';
 import { useAppDispatch, useAppSelector } from '@lib/hooks';
-import { Container, Title } from '@mantine/core';
+import { Container, Flex, Title } from '@mantine/core';
 import { useEffect } from 'react';
 
 export interface PeopleProps {
@@ -22,15 +23,20 @@ function People({ params }: PeopleProps) {
   if (!people) return '';
 
   return (
-    <>
+    <Flex direction="column" pb={32}>
       <PeopleBasicInfo people={people}></PeopleBasicInfo>
-      <Container fluid>
+      <Container style={{ width: '100%' }} fluid>
         <Title order={4} mt="sm" mb="sm">
           Known For
         </Title>
         <PersonCreditCarousel credits={people.combined_credits?.cast || []}></PersonCreditCarousel>
+
+        <Title order={4} mt="sm" mb="sm">
+          Profile
+        </Title>
+        <ProfilesCarousel profiles={people.images?.profiles || []}></ProfilesCarousel>
       </Container>
-    </>
+    </Flex>
   );
 }
 

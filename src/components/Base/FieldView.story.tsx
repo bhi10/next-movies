@@ -16,3 +16,11 @@ export const Default: Story = {
     value: 'Christopher Nolan',
   },
 };
+
+export const Children: Story = {
+  args: {
+    label: 'Director',
+    children: <span>span</span>,
+    value: 'Christopher Nolan',
+  },
+};

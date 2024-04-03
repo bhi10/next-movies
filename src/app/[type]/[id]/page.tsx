@@ -7,7 +7,7 @@ import MediaBasicInfo from '@components/Pages/Media/MediaBasicInfo';
 import { getImages, imagesList } from '@lib/features/imagesSlice';
 import { getMedia, mediaDetail } from '@lib/features/mediaSlice';
 import { useAppDispatch, useAppSelector } from '@lib/hooks';
-import { Container, Flex, Title } from '@mantine/core';
+import { Container, Flex } from '@mantine/core';
 import { useEffect } from 'react';
 
 interface MediaProps {
@@ -27,21 +27,14 @@ function Media({ params }: MediaProps) {
   if (!media) return '';
 
   return (
-    <Flex direction="column">
+    <Flex direction="column" pb={32}>
       <MediaBasicInfo mediaType={params.type} media={media}></MediaBasicInfo>
-      <Container fluid>
-        <Title order={4} mt="sm" mb="sm">
-          Top Cast
-        </Title>
+      <Container fluid style={{ width: '100%' }}>
         <CastCarousel casts={media?.credits?.cast || []}></CastCarousel>
-
-        <Title order={4} mt="sm" mb="sm">
-          Backdrops
-        </Title>
         <BackdropsCarousel backdrops={images?.backdrops}></BackdropsCarousel>
       </Container>
     </Flex>
   );
 }
 
-export default Media
+export default Media;

@@ -16,10 +16,11 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./src/*"],
+      "@*": ["./src/*"],
       "@app/*": ["./src/app/*"],
       "@components/*": ["./src/components/*"],
-      "@lib/*": ["./src/lib/*"]
+      "@lib/*": ["./src/lib/*"],
+      "@utils/*": ["./src/utils/*"]
     },
     "plugins": [{ "name": "next" }]
   },

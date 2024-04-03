@@ -1,6 +1,6 @@
 import { TrendingMedia } from '@app/types';
-import { getImgPath } from '@lib/utils';
 import { Paper, Text, Title } from '@mantine/core';
+import { getImgPath } from '@utils/common-utils';
 import Link from 'next/link';
 import classes from './MediaCard.module.css';
 

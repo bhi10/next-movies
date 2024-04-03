@@ -1,3 +1,3 @@
 export default function Tv() {
-  return ('TV Shows')
+  return 'TV Shows';
 }
