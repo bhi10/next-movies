@@ -1,0 +1,43 @@
+.link {
+  width: rem(36px);
+  height: rem(36px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
+
+  &:hover {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-5));
+  }
+}
+
+.facebook {
+  &:hover {
+    background-color: rgba(66, 103, 178, 0.1);
+  }
+}
+
+.instagram {
+  &:hover {
+    background-color: rgba(225, 48, 108, 0.1);
+  }
+}
+
+.twitter {
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.tiktok {
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.youtube {
+  &:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+  }
+}

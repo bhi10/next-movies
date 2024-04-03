@@ -31,18 +31,18 @@ export const trendingSlice = createAppSlice({
   reducers: create => ({}),
 
   extraReducers(TrendingData) {
-    TrendingData.addCase(getTrending.pending, (state) => {
-      state.status = 'loading'
+    TrendingData.addCase(getTrending.pending, state => {
+      state.status = 'loading';
     })
-    .addCase(getTrending.fulfilled, (state, action) => {
-      state.list = action.payload;
-      state.status = 'success';
-    })
-    .addCase(getTrending.rejected, (state) => {
-      state.status = 'failed';
-      state.list = [];
-    })
-  }
+      .addCase(getTrending.fulfilled, (state, action) => {
+        state.list = action.payload;
+        state.status = 'success';
+      })
+      .addCase(getTrending.rejected, state => {
+        state.status = 'failed';
+        state.list = [];
+      });
+  },
 });
 
 export const trendingList = (state: RootState) => state.trending.list;

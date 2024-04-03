@@ -1,13 +1,12 @@
 import { Media, MediaType } from '@app/types';
 import DateDisplay from '@components/Base/DateDisplay';
 import FieldView from '@components/Base/FieldView';
+import Poster from '@components/Cards/Poster';
 import GenreChipList from '@components/Genre/GenreChipList';
-import { directorDetails, formatMovieDuration } from '@/utils/common-utils';
-import Poster from '@/components/Cards/Poster';
-import { getImgPath, getYearFromDate } from '@lib/utils';
 import { Container, Flex, Text, Title } from '@mantine/core';
-import classes from './MediaBasicInfo.module.css';
+import { directorDetails, formatMovieDuration, getImgPath, getYearFromDate } from '@utils/common-utils';
 import Link from 'next/link';
+import classes from './MediaBasicInfo.module.css';
 
 export interface MediaBasicInfoProps {
   mediaType: MediaType;
@@ -21,7 +20,8 @@ function MediaBasicInfo({ mediaType = 'movie', media }: MediaBasicInfoProps) {
 
   const title = mediaType === 'movie' ? media.title : media.name;
   const releaseDate = mediaType === 'movie' ? media.release_date : media.first_air_date;
-  const year = ` (${getYearFromDate(releaseDate || '')})`;
+
+  const year = releaseDate ? ` (${getYearFromDate(releaseDate || '')})` : '';
 
   const director = media && media.credits && directorDetails(media.credits.crew)[0];
 

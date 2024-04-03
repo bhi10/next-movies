@@ -3,13 +3,14 @@ import { CSSProperties, MouseEventHandler, useState } from 'react';
 import classes from './FieldView.module.css';
 
 interface FieldViewProps {
+  children?: React.ReactNode;
   label: string;
-  value?: string;
+  value?: string | number;
   placeHolder?: string;
   disableValue?: boolean;
   dark?: boolean;
   lineClamp?: boolean;
-  styles: CSSProperties | undefined;
+  styles?: CSSProperties | undefined;
   onClick?: MouseEventHandler<HTMLDivElement> | undefined;
 }
 
@@ -41,16 +42,27 @@ interface FieldViewProps {
  */
 // export default function FieldView
 
-function FieldView({ label, value, placeHolder = '-', disableValue, onClick, styles, dark, lineClamp }: FieldViewProps): JSX.Element {
+function FieldView({ children, label, value, placeHolder = '-', disableValue, onClick, styles, dark, lineClamp }: FieldViewProps): JSX.Element {
   const [lineClampNumber, setLineClampNumber] = useState(6);
   return (
     <div style={styles} className={classes.fieldView}>
       <Title order={6} c={dark ? 'dark.0' : ''} opacity={0.6}>
         {label}
       </Title>
-      <Text size="md" c={dark ? 'dark.0' : ''} opacity={disableValue ? 0.36 : 'inherit'} lineClamp={lineClamp ? lineClampNumber : 0} onClick={onClick}>
-        {value || placeHolder}
-      </Text>
+      {children ? (
+        children
+      ) : (
+        <Text
+          size="md"
+          c={dark ? 'dark.0' : ''}
+          opacity={disableValue ? 0.36 : 'inherit'}
+          lineClamp={lineClamp ? lineClampNumber : 0}
+          onClick={onClick}
+        >
+          {value || placeHolder}
+        </Text>
+      )}
+
       {lineClamp && value && lineClampNumber !== 0 ? (
         <div className={classes.read_more}>
           <a className={classes.anchor} onClick={() => setLineClampNumber(0)}>
