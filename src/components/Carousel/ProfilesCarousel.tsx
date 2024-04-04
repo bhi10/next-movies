@@ -19,7 +19,7 @@ function ProfilesCarousel({ profiles }: ProfilesCarouselProps) {
     );
   });
   return (
-    <Carousel slideSize={{ base: '100%', sm: '25%', md: '12.5%' }} slideGap={{ base: 0, sm: 'md' }} align="start">
+    <Carousel slideSize={{ base: '100%', sm: '25%', md: '12.5%' }} slideGap={{ base: 0, sm: 'md' }} align="start" dragFree>
       {slides}
     </Carousel>
   );
