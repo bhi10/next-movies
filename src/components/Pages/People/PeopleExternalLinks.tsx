@@ -12,7 +12,7 @@ export interface PeopleExternalLinksProps {
 
 function PeopleExternalLinks({ external, homepage }: PeopleExternalLinksProps) {
   const count = getSocialMediaCount(external);
-  
+
   return (
     <Flex gap={4} align="center">
       {external.facebook_id && (

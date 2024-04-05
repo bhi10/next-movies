@@ -4,6 +4,7 @@ import BackdropsCarousel from '@/components/Carousel/BackdropsCarousel';
 import { MediaType } from '@app/types';
 import CastCarousel from '@components/Carousel/CastCarousel';
 import MediaBasicInfo from '@components/Pages/Media/MediaBasicInfo';
+import { language } from '@lib/features/Config/selectors';
 import { getImages, imagesList } from '@lib/features/imagesSlice';
 import { getMedia, mediaDetail } from '@lib/features/mediaSlice';
 import { useAppDispatch, useAppSelector } from '@lib/hooks';
@@ -23,6 +24,7 @@ function Media({ params }: MediaProps) {
 
   const media = useAppSelector(mediaDetail);
   const images = useAppSelector(imagesList);
+  const lang = language(media?.original_language);
 
   if (!media) return '';
 
