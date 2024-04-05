@@ -423,7 +423,7 @@ export interface CombinedCreditsCast {
   character?: string;
   credit_id?: string;
   order?: number;
-  media_type: 'movie' | 'tv';
+  media_type: MediaType;
   origin_country?: string[];
   original_name?: string;
   first_air_date?: string;
@@ -451,12 +451,13 @@ export interface CombinedCreditsCrew {
   credit_id: string;
   department: string;
   job: string;
-  media_type: string;
+  media_type: MediaType;
   origin_country?: string[];
   original_name?: string;
   first_air_date?: string;
   name?: string;
   episode_count?: number;
+  character?: string;
 }
 
 export interface CombinedCredits {

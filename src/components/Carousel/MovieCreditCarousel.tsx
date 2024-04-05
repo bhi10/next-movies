@@ -1,4 +1,4 @@
-import { CombinedCreditsCast } from '@app/types';
+import { CombinedCreditsCast, CombinedCreditsCrew } from '@app/types';
 import { compareDates } from '@utils/common-utils';
 import HorizontalScroller from '../Base/HorizontalScroller';
 import PeopleCreditCard from '../Pages/People/MovieCreditCard';
@@ -6,7 +6,7 @@ import { Title } from '@mantine/core';
 
 interface MovieCreditCarouselProps {
   title?: string;
-  credits: CombinedCreditsCast[] | undefined;
+  credits: (CombinedCreditsCast | CombinedCreditsCrew)[] | undefined;
   gap?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
 
@@ -18,6 +18,7 @@ function MovieCreditCarousel({ title = 'Known For', credits, gap = 'md' }: Movie
 
   const slides = sortedCasts.map((credit, index) => (
     <PeopleCreditCard
+      key={index}
       id={credit.id}
       poster_path={credit.poster_path}
       title={credit.media_type === 'tv' ? credit.name : credit.title}

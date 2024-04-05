@@ -24,9 +24,9 @@ function MovieCreditCard({ id, poster_path, title, character, media_type }: Movi
           {title}
         </Text>
 
-        <Text ta="center" c="dimmed" size="xs" truncate="end">
+        {character ? <Text ta="center" c="dimmed" size="xs" truncate="end">
           {character}
-        </Text>
+        </Text> : null}
       </Card>
     </Link>
   );

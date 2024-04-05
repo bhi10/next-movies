@@ -122,3 +122,19 @@ export const moneyFormat = (number: number): string => {
 
   return `$ ${formated}`;
 };
+
+export const removeDuplicateIds = <T, K extends keyof T>(array: T[], key: K): T[] => {
+  const keyMap: Map<T[K], T> = new Map();
+
+  // Iterate over the array of objects
+  array.forEach(obj => {
+    // Check if the map already has an object with the same key
+    if (!keyMap.has(obj[key])) {
+      // If not, add it to the map
+      keyMap.set(obj[key], obj);
+    }
+  });
+
+  // Return the values from the map (which will be unique objects)
+  return Array.from(keyMap.values());
+};
