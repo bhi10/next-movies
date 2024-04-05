@@ -30,7 +30,7 @@ function Media({ params }: MediaProps) {
 
   return (
     <Flex direction="column" pb={32}>
-      <MediaBasicInfo mediaType={params.type} media={media} language={lang?.english_name}></MediaBasicInfo>
+      <MediaBasicInfo mediaType={params.type} media={media}></MediaBasicInfo>
       <Container fluid style={{ width: '100%' }}>
         <CastCarousel casts={media?.credits?.cast || []}></CastCarousel>
         <BackdropsCarousel backdrops={images?.backdrops}></BackdropsCarousel>
