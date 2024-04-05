@@ -11,6 +11,7 @@ import { getMedia, mediaDetail } from '@lib/features/mediaSlice';
 import { useAppDispatch, useAppSelector } from '@lib/hooks';
 import { Container, Flex } from '@mantine/core';
 import { useEffect } from 'react';
+import ModalImage from 'react-modal-image';
 
 interface MediaProps {
   params: { type: MediaType; id: string };
@@ -38,6 +39,13 @@ function Media({ params }: MediaProps) {
         <RecommendationsCarousel recommendations={media.recommendations?.results} media_type={params.type}></RecommendationsCarousel>
         <RecommendationsCarousel title="Similar" recommendations={media.similar?.results} media_type={params.type}></RecommendationsCarousel>
       </Container>
+      <ModalImage
+        small={'https://image.tmdb.org/t/p/w300/lmm35G3BAAtTkLSI9yVWZUVyvWi.jpg'}
+        large={'https://image.tmdb.org/t/p/original/lmm35G3BAAtTkLSI9yVWZUVyvWi.jpg'}
+        alt="Hello World!"
+        
+      />
+      
     </Flex>
   );
 }

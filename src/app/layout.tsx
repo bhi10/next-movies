@@ -1,14 +1,12 @@
 // These styles apply to every route in the application
 import './globals.css';
 
-import Drawer from '@/components/AppShell/Navbar';
 import '@mantine/carousel/styles.css';
-import { MantineProvider } from '@mantine/core';
+import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
 import { theme } from '../theme';
-import Header from '@components/AppShell/Header';
+import App from './App';
 import StoreProvider from './StoreProvider';
-import AppDataProvider from './AppDataProvider';
 
 export const metadata = {
   title: 'TMDB',
@@ -20,17 +18,13 @@ export default function RootLayout({ children }: { children: any }) {
     <StoreProvider>
       <html lang="en">
         <head>
+          <ColorSchemeScript />
           <link rel="shortcut icon" href="/favicon.svg" />
           <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no" />
         </head>
         <body>
-          <AppDataProvider></AppDataProvider>
           <MantineProvider theme={theme}>
-            <Drawer></Drawer>
-            <div className="page-wrapper">
-              <Header></Header>
-              {children}
-            </div>
+            <App>{children}</App>
           </MantineProvider>
         </body>
       </html>

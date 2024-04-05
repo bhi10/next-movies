@@ -3,7 +3,7 @@
 import { Stack, useComputedColorScheme, useMantineColorScheme } from '@mantine/core';
 import { IconDeviceTv, IconHome2, IconMoon, IconMovie, IconSun, IconUsers } from '@tabler/icons-react';
 import Link from 'next/link';
-import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import classes from './Navbar.module.css';
 import NavbarLink from './NavbarLink';
 
@@ -11,23 +11,21 @@ interface NavbarItems {
   icon: typeof IconHome2;
   label: string;
   href: string;
+  name: string;
 }
 
 const drawerItems: NavbarItems[] = [
-  { icon: IconHome2, label: 'Home', href: '/' },
-  { icon: IconMovie, label: 'Movies', href: '/movies' },
-  { icon: IconDeviceTv, label: 'TV Shows', href: '/tv' },
-  { icon: IconUsers, label: 'People', href: '/people' },
+  { icon: IconHome2, label: 'Home', name: '', href: '/' },
+  { icon: IconMovie, label: 'Movies', name: 'movie', href: '/movie' },
+  { icon: IconDeviceTv, label: 'TV Shows', name: 'tv', href: '/tv' },
+  { icon: IconUsers, label: 'People', name: 'people', href: '/people' },
 ];
 
 export default function Navbar() {
-  const [active, setActive] = useState(0);
   const { setColorScheme } = useMantineColorScheme();
   const computedColorScheme = useComputedColorScheme('light', { getInitialValueInEffect: true });
 
-  const onItemClick = (item: NavbarItems, index: number) => {
-    setActive(index);
-  };
+  const pathName = usePathname().split('/')[1];
 
   const onThemeChange = () => {
     const value = computedColorScheme === 'light' ? 'dark' : 'light';
@@ -36,7 +34,7 @@ export default function Navbar() {
 
   const links = drawerItems.map((item, index) => (
     <Link href={item.href} key={index}>
-      <NavbarLink icon={item.icon} label={item.label} active={index === active} onClick={() => onItemClick(item, index)}></NavbarLink>
+      <NavbarLink icon={item.icon} label={item.label} active={pathName === item.name} ></NavbarLink>
     </Link>
   ));
 
