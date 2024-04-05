@@ -1,6 +1,6 @@
 import { Image as ImageInterface } from '@app/types';
 import { Carousel } from '@mantine/carousel';
-import { Image } from '@mantine/core';
+import { Image, Title } from '@mantine/core';
 import { getImgPath } from '@utils/common-utils';
 
 export interface ProfilesCarouselProps {
@@ -19,9 +19,14 @@ function ProfilesCarousel({ profiles }: ProfilesCarouselProps) {
     );
   });
   return (
-    <Carousel slideSize={{ base: '100%', sm: '25%', md: '12.5%' }} slideGap={{ base: 0, sm: 'md' }} align="start" dragFree>
-      {slides}
-    </Carousel>
+    <>
+      <Title order={4} mt="sm" mb="sm">
+        Profile
+      </Title>
+      <Carousel slideSize={{ base: '100%', sm: '25%', md: '12.5%' }} slideGap={{ base: 0, sm: 'md' }} align="start" dragFree>
+        {slides}
+      </Carousel>
+    </>
   );
 }
 

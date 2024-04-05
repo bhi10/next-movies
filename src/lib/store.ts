@@ -3,8 +3,9 @@ import imagesSlice from './features/imagesSlice';
 import mediaSlice from './features/mediaSlice';
 import peopleSlice from './features/peopleSlice';
 import trendingSlice from './features/trendingSlice';
+import configSlice from './features/Config/configSlice';
 
-const rootReducer = combineSlices(trendingSlice, mediaSlice, imagesSlice, peopleSlice);
+const rootReducer = combineSlices(trendingSlice, mediaSlice, imagesSlice, peopleSlice, configSlice);
 
 export const makeStore = () => {
   return configureStore({

@@ -2,6 +2,7 @@ import { CombinedCreditsCast } from '@app/types';
 import { compareDates } from '@utils/common-utils';
 import HorizontalScroller from '../Base/HorizontalScroller';
 import PeopleCreditCard from '../Pages/People/PeopleCreditCard';
+import { Title } from '@mantine/core';
 
 interface PersonCreditCarouselProps {
   credits: CombinedCreditsCast[] | undefined;
@@ -23,7 +24,15 @@ function PersonCreditCarousel({ credits, gap = 'md' }: PersonCreditCarouselProps
       media_type={credit.media_type}
     />
   ));
-  return <HorizontalScroller gap={gap}>{slides}</HorizontalScroller>;
+
+  return (
+    <>
+      <Title order={4} mt="sm" mb="sm">
+        Known For
+      </Title>
+      <HorizontalScroller gap={gap}>{slides}</HorizontalScroller>
+    </>
+  );
 }
 
 export default PersonCreditCarousel;

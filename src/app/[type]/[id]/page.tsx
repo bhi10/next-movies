@@ -4,6 +4,7 @@ import BackdropsCarousel from '@/components/Carousel/BackdropsCarousel';
 import { MediaType } from '@app/types';
 import CastCarousel from '@components/Carousel/CastCarousel';
 import MediaBasicInfo from '@components/Pages/Media/MediaBasicInfo';
+import { language } from '@lib/features/Config/selectors';
 import { getImages, imagesList } from '@lib/features/imagesSlice';
 import { getMedia, mediaDetail } from '@lib/features/mediaSlice';
 import { useAppDispatch, useAppSelector } from '@lib/hooks';
@@ -23,12 +24,13 @@ function Media({ params }: MediaProps) {
 
   const media = useAppSelector(mediaDetail);
   const images = useAppSelector(imagesList);
+  const lang = language(media?.original_language);
 
   if (!media) return '';
 
   return (
     <Flex direction="column" pb={32}>
-      <MediaBasicInfo mediaType={params.type} media={media}></MediaBasicInfo>
+      <MediaBasicInfo mediaType={params.type} media={media} language={lang?.english_name}></MediaBasicInfo>
       <Container fluid style={{ width: '100%' }}>
         <CastCarousel casts={media?.credits?.cast || []}></CastCarousel>
         <BackdropsCarousel backdrops={images?.backdrops}></BackdropsCarousel>

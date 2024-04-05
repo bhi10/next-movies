@@ -5,6 +5,7 @@ import { addons } from '@storybook/preview-api';
 import { DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
 import { MantineProvider, useMantineColorScheme } from '@mantine/core';
 import { theme } from '../src/theme';
+import '../src/app/globals.css';
 
 const channel = addons.getChannel();
 

@@ -8,6 +8,7 @@ import '@mantine/core/styles.css';
 import { theme } from '../theme';
 import Header from '@components/AppShell/Header';
 import StoreProvider from './StoreProvider';
+import AppDataProvider from './AppDataProvider';
 
 export const metadata = {
   title: 'TMDB',
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: { children: any }) {
           <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no" />
         </head>
         <body>
+          <AppDataProvider></AppDataProvider>
           <MantineProvider theme={theme}>
             <Drawer></Drawer>
             <div className="page-wrapper">
