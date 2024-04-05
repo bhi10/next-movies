@@ -12,13 +12,13 @@ interface RecommendationsCarouselProps {
 }
 
 function RecommendationsCarousel({ title = 'Recommendations', recommendations, gap = 'md', media_type = 'movie' }: RecommendationsCarouselProps) {
-  if (!recommendations) return '';
+  if (!recommendations || recommendations?.length === 0) return '';
 
   const filteredCasts = recommendations.filter(recommendation => recommendation.poster_path);
   const sortedCasts = filteredCasts.sort((a, b) => compareDates(a.release_date, b.release_date));
 
   const slides = sortedCasts.map((credit, index) => (
-    <PeopleCreditCard id={credit.id} poster_path={credit.poster_path} title={credit.title || credit.name} media_type={media_type} />
+    <PeopleCreditCard key={index} id={credit.id} poster_path={credit.poster_path} title={credit.title || credit.name} media_type={media_type} />
   ));
 
   return (

@@ -45,7 +45,7 @@ function MediaBasicInfo({ mediaType = 'movie', media, language = '' }: MediaBasi
           <span className={classes.secondaryColor}>{year}</span>
         </Title>
 
-        {genres && <GenreChipList genres={genres}></GenreChipList>}
+        {genres ? <GenreChipList genres={genres}></GenreChipList> : null}
 
         <Flex mt={4} align="center" gap={8}>
           {release_date && <DateDisplay date={release_date} size="xs" c={`gray.5`}></DateDisplay>}
@@ -55,32 +55,32 @@ function MediaBasicInfo({ mediaType = 'movie', media, language = '' }: MediaBasi
           </Text>
         </Flex>
 
-        {media.tagline && (
+        {media.tagline ? (
           <Text mt={8} fs={'italic'} c={`gray.4`}>
             {media.tagline}
           </Text>
-        )}
+        ) : null}
 
-        <FieldView styles={{ marginTop: '8px' }} label="Overview" value={overview} dark lineClamp></FieldView>
+        {overview ? <FieldView styles={{ marginTop: '8px' }} label="Overview" value={overview} dark lineClamp></FieldView> : null}
 
         <SimpleGrid mt={12} cols={2} spacing="sm">
-          {director && (
+          {director ? (
             <Link className="remove-text-decoration" href={`/people/${director.id}`}>
               <FieldView label={director.job} value={director.name} dark></FieldView>
             </Link>
-          )}
+          ) : null}
 
-          {status && <FieldView label={'Status'} value={status} dark></FieldView>}
+          {status ? <FieldView label={'Status'} value={status} dark></FieldView> : null}
 
-          {language && <FieldView label={'Original Language'} value={language} dark></FieldView>}
+          {language ? <FieldView label={'Original Language'} value={language} dark></FieldView> : null}
 
-          {spoken_languages && (
+          {spoken_languages && spoken_languages.length !== 0 ? (
             <FieldView label={'Spoken Languages'} value={spoken_languages.map(lang => lang.english_name).join(', ')} dark></FieldView>
-          )}
+          ) : null}
 
-          {budget && <FieldView label={'Budget'} value={moneyFormat(budget)} dark></FieldView>}
+          {budget ? <FieldView label={'Budget'} value={moneyFormat(budget)} dark></FieldView> : null}
 
-          {revenue ? <FieldView label={'Revenue'} value={moneyFormat(revenue)} dark></FieldView> : ''}
+          {revenue ? <FieldView label={'Revenue'} value={moneyFormat(revenue)} dark></FieldView> : null}
         </SimpleGrid>
       </div>
     </Container>

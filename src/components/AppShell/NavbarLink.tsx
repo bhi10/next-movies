@@ -12,7 +12,7 @@ interface NavbarLinkProps {
 function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
   return (
     <Tooltip label={label} position="right" transitionProps={{ duration: 0 }}>
-      <UnstyledButton onClick={onClick} className={classes.link} data-active={active || undefined}>
+      <UnstyledButton value={label} aria-label={label} className={classes.link} data-active={active || undefined} onClick={onClick}>
         <Icon style={{ width: rem(20), height: rem(20) }} stroke={1.5} />
       </UnstyledButton>
     </Tooltip>

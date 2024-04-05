@@ -9,7 +9,7 @@ interface CastCarouselProps {
 }
 
 export default function CastCarousel({ casts, gap = 'md' }: CastCarouselProps) {
-  if (!casts) return '';
+  if (!casts || casts.length === 0) return '';
 
   const filteredCasts = casts.filter(cast => cast.profile_path);
   const slides = filteredCasts.map((cast, index) => <Cast cast={cast} key={index} />);
