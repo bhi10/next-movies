@@ -5,7 +5,7 @@ import PeopleCreditCard from '../Pages/People/MovieCreditCard';
 import { Title } from '@mantine/core';
 
 interface MovieCreditCarouselProps {
-  title: string;
+  title?: string;
   credits: CombinedCreditsCast[] | undefined;
   gap?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
