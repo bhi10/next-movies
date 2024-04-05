@@ -17,7 +17,7 @@ const initialState: MediaSliceState = {
 export const getMedia = createAsyncThunk(`media`, async ({ type, id }: { type: MediaType; id: string | number }) => {
   try {
     const media = await fetchApi(`/${type}/${id}`, {
-      append_to_response: 'credits,images,videos,recommendations,episodes',
+      append_to_response: 'credits,images,videos,recommendations,episodes,similar',
       include_image_language: 'en',
     });
     return media;

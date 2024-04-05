@@ -3,6 +3,7 @@
 import BackdropsCarousel from '@/components/Carousel/BackdropsCarousel';
 import { MediaType } from '@app/types';
 import CastCarousel from '@components/Carousel/CastCarousel';
+import RecommendationsCarousel from '@components/Carousel/RecommendationsCarousel';
 import MediaBasicInfo from '@components/Pages/Media/MediaBasicInfo';
 import { language } from '@lib/features/Config/selectors';
 import { getImages, imagesList } from '@lib/features/imagesSlice';
@@ -30,10 +31,12 @@ function Media({ params }: MediaProps) {
 
   return (
     <Flex direction="column" pb={32}>
-      <MediaBasicInfo mediaType={params.type} media={media}></MediaBasicInfo>
+      <MediaBasicInfo mediaType={params.type} media={media} language={lang?.english_name}></MediaBasicInfo>
       <Container fluid style={{ width: '100%' }}>
         <CastCarousel casts={media?.credits?.cast || []}></CastCarousel>
         <BackdropsCarousel backdrops={images?.backdrops}></BackdropsCarousel>
+        <RecommendationsCarousel recommendations={media.recommendations?.results} media_type={params.type}></RecommendationsCarousel>
+        <RecommendationsCarousel title="Similar" recommendations={media.similar?.results} media_type={params.type}></RecommendationsCarousel>
       </Container>
     </Flex>
   );

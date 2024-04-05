@@ -1,15 +1,16 @@
 import { CombinedCreditsCast } from '@app/types';
 import { compareDates } from '@utils/common-utils';
 import HorizontalScroller from '../Base/HorizontalScroller';
-import PeopleCreditCard from '../Pages/People/PeopleCreditCard';
+import PeopleCreditCard from '../Pages/People/MovieCreditCard';
 import { Title } from '@mantine/core';
 
-interface PersonCreditCarouselProps {
+interface MovieCreditCarouselProps {
+  title?: string;
   credits: CombinedCreditsCast[] | undefined;
   gap?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
 
-function PersonCreditCarousel({ credits, gap = 'md' }: PersonCreditCarouselProps) {
+function MovieCreditCarousel({ title = 'Known For', credits, gap = 'md' }: MovieCreditCarouselProps) {
   if (!credits) return '';
 
   const filteredCasts = credits.filter(credit => credit.poster_path);
@@ -28,11 +29,11 @@ function PersonCreditCarousel({ credits, gap = 'md' }: PersonCreditCarouselProps
   return (
     <>
       <Title order={4} mt="sm" mb="sm">
-        Known For
+        {title}
       </Title>
       <HorizontalScroller gap={gap}>{slides}</HorizontalScroller>
     </>
   );
 }
 
-export default PersonCreditCarousel;
+export default MovieCreditCarousel;
