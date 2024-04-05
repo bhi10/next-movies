@@ -5,7 +5,7 @@ import classes from './FieldView.module.css';
 interface FieldViewProps {
   children?: React.ReactNode;
   label: string;
-  value?: string | number;
+  value?: string;
   placeHolder?: string;
   disableValue?: boolean;
   dark?: boolean;
@@ -43,7 +43,7 @@ interface FieldViewProps {
 // export default function FieldView
 
 function FieldView({ children, label, value, placeHolder = '-', disableValue, onClick, styles, dark, lineClamp }: FieldViewProps): JSX.Element {
-  const [lineClampNumber, setLineClampNumber] = useState(6);
+  const [lineClampNumber, setLineClampNumber] = useState(4);
   return (
     <div style={styles} className={classes.fieldView}>
       <Title order={6} c={dark ? 'dark.0' : ''} opacity={0.6}>
@@ -63,7 +63,7 @@ function FieldView({ children, label, value, placeHolder = '-', disableValue, on
         </Text>
       )}
 
-      {lineClamp && value && lineClampNumber !== 0 ? (
+      {lineClamp && value && value.length > 600 && lineClampNumber !== 0 ? (
         <div className={classes.read_more}>
           <a className={classes.anchor} onClick={() => setLineClampNumber(0)}>
             Read More{' '}

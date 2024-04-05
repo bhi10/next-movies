@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import PeopleCreditCard from './PeopleCreditCard';
+import MovieCreditCard from './MovieCreditCard';
 
-const meta: Meta<typeof PeopleCreditCard> = {
-  component: PeopleCreditCard,
+const meta: Meta<typeof MovieCreditCard> = {
+  component: MovieCreditCard,
 };
 
 export default meta;
-type Story = StoryObj<typeof PeopleCreditCard>;
+type Story = StoryObj<typeof MovieCreditCard>;
 
 export const WakeUpSid: Story = {
   args: {

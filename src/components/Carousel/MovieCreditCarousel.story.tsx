@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import PeopleCreditCarousel from './PeopleCreditCarousel';
+import MovieCreditCarousel from './MovieCreditCarousel';
 
-const meta: Meta<typeof PeopleCreditCarousel> = {
-  component: PeopleCreditCarousel,
+const meta: Meta<typeof MovieCreditCarousel> = {
+  component: MovieCreditCarousel,
 };
 
 export default meta;
 
-type Story = StoryObj<typeof PeopleCreditCarousel>;
+type Story = StoryObj<typeof MovieCreditCarousel>;
 
 export const Default: Story = {
   args: {

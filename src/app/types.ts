@@ -2,7 +2,7 @@ export type MediaType = 'movie' | 'tv' | 'all';
 
 // Movie Types: START
 
-interface MediaMovie {
+export interface MediaMovie {
   adult: boolean;
   backdrop_path: string | null;
   belongs_to_collection?: string | null;
@@ -29,6 +29,8 @@ interface MediaMovie {
   vote_average: number;
   vote_count: number;
   credits?: Credits;
+  recommendations?: Recommendations;
+  similar?: Similar;
 }
 
 interface Genre {
@@ -45,6 +47,35 @@ interface SpokenLanguage {
   english_name: string;
   iso_639_1: string;
   name: string;
+}
+
+export interface Recommendations {
+  page: number;
+  results: RecommendationMedia[];
+}
+
+export interface Similar {
+  page: number;
+  results: RecommendationMedia[];
+}
+
+export interface RecommendationMedia {
+  adult: boolean;
+  backdrop_path: string | null;
+  id: number;
+  title: string;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  poster_path: string | null;
+  media_type: 'movie' | 'tv';
+  genre_ids: number[];
+  popularity: number;
+  release_date: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+  name?: string;
 }
 
 export interface MoviesImages {

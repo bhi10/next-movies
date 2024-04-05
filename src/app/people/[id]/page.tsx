@@ -1,6 +1,6 @@
 'use client';
 
-import PersonCreditCarousel from '@components/Carousel/PeopleCreditCarousel';
+import PersonCreditCarousel from '@components/Carousel/MovieCreditCarousel';
 import ProfilesCarousel from '@components/Carousel/ProfilesCarousel';
 import PeopleBasicInfo from '@components/Pages/People/PeopleBasicInfo';
 import { getPeople, peopleDetail } from '@lib/features/peopleSlice';
