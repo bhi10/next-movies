@@ -25,6 +25,8 @@ function MediaBasicInfo({ mediaType = 'movie', media }: MediaBasicInfoProps) {
 
   const director = media && media.credits && directorDetails(media.credits.crew)[0];
 
+  const { status } = media;
+
   return (
     <Container
       fluid
@@ -71,6 +73,8 @@ function MediaBasicInfo({ mediaType = 'movie', media }: MediaBasicInfoProps) {
             <FieldView styles={{ marginTop: '20px' }} label={director.job} value={director.name} dark></FieldView>
           </Link>
         )}
+
+        {status && <FieldView styles={{ marginTop: '20px' }} label={'Status'} value={status} dark></FieldView>}
       </div>
     </Container>
   );
