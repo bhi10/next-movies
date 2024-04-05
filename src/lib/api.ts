@@ -38,6 +38,7 @@ export const api = axios.create({
   baseURL: apiUrl,
   params: {
     api_key: apiKey,
+    include_adult: true,
   },
 });
 

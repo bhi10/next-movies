@@ -1,7 +1,7 @@
 import { ExternalIds } from '@app/types';
 import { Divider, Flex, UnstyledButton, rem } from '@mantine/core';
 import { IconBrandFacebook, IconBrandInstagram, IconBrandTiktok, IconBrandX, IconBrandYoutube, IconLink } from '@tabler/icons-react';
-import { faceBookLink, instagramLink, tiktokLink, twitterLink, youtubeLink } from '@utils/common-utils';
+import { faceBookLink, getSocialMediaCount, instagramLink, tiktokLink, twitterLink, youtubeLink } from '@utils/common-utils';
 import Link from 'next/link';
 import classes from './PeopleExternalLinks.module.css';
 
@@ -11,6 +11,8 @@ export interface PeopleExternalLinksProps {
 }
 
 function PeopleExternalLinks({ external, homepage }: PeopleExternalLinksProps) {
+  const count = getSocialMediaCount(external);
+  
   return (
     <Flex gap={4} align="center">
       {external.facebook_id && (
@@ -53,7 +55,7 @@ function PeopleExternalLinks({ external, homepage }: PeopleExternalLinksProps) {
         </Link>
       )}
 
-      {homepage && <Divider orientation="vertical" ml={4} mr={4}></Divider>}
+      {homepage && count ? <Divider orientation="vertical" ml={4} mr={4}></Divider> : ''}
 
       {homepage && (
         <Link target="_blank" href={homepage}>

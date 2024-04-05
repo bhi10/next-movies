@@ -1,4 +1,4 @@
-import { CrewMember, ImageWidthSizes } from '@app/types';
+import { CrewMember, ExternalIds, ImageWidthSizes } from '@app/types';
 import { apiImgUrl, faceBookBaseUrl, instagramBaseUrl, tiktokBaseUrl, twitterBaseUrl, youtubeBaseUrl } from './constants';
 
 // Social Links
@@ -82,3 +82,29 @@ export function compareDates(dateA: string | undefined, dateB: string | undefine
   const date2 = new Date(dateB);
   return date2.getTime() - date1.getTime();
 }
+
+export const getSocialMediaCount = (socialMediaIds: ExternalIds): number => {
+  let count = 0;
+
+  if (socialMediaIds.facebook_id) {
+    count++;
+  }
+
+  if (socialMediaIds.instagram_id) {
+    count++;
+  }
+
+  if (socialMediaIds.twitter_id) {
+    count++;
+  }
+
+  if (socialMediaIds.tiktok_id) {
+    count++;
+  }
+
+  if (socialMediaIds.youtube_id) {
+    count++;
+  }
+
+  return count;
+};
