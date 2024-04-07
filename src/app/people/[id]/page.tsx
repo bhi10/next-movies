@@ -1,8 +1,8 @@
 'use client';
 
 import { CombinedCreditsCast, CombinedCreditsCrew } from '@app/types';
+import ImagesCarousel from '@components/Carousel/ImagesCarousel';
 import PersonCreditCarousel from '@components/Carousel/MovieCreditCarousel';
-import ProfilesCarousel from '@components/Carousel/ProfilesCarousel';
 import PeopleBasicInfo from '@components/Pages/People/PeopleBasicInfo';
 import { getPeople, peopleDetail } from '@lib/features/peopleSlice';
 import { useAppDispatch, useAppSelector } from '@lib/hooks';
@@ -39,7 +39,13 @@ function People({ params }: PeopleProps) {
       <Container style={{ width: '100%' }} fluid>
         {final.length !== 0 ? <PersonCreditCarousel credits={final}></PersonCreditCarousel> : null}
 
-        <ProfilesCarousel profiles={people.images?.profiles || []}></ProfilesCarousel>
+        <ImagesCarousel
+          images={people.images?.profiles}
+          path="file_path"
+          label="Profile"
+          slideSize={{ base: '100%', sm: '25%', md: '12.5%' }}
+          slideGap={{ base: 0, sm: 'md' }}
+        ></ImagesCarousel>
       </Container>
     </Flex>
   );

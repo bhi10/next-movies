@@ -1,4 +1,4 @@
-import { Card, Image, Text } from '@mantine/core';
+import { Card, Image, Text, Tooltip } from '@mantine/core';
 import { getImgPath } from '@utils/common-utils';
 import Link from 'next/link';
 import classes from './MovieCreditCard.module.css';
@@ -20,13 +20,21 @@ function MovieCreditCard({ id, poster_path, title, character, media_type }: Movi
           <Image src={getImgPath(poster_path, 'w150_and_h225_bestv2')} width={150} height={225} alt={title} />
         </Card.Section>
 
-        <Text ta="center" fw={500} size="sm" mt="xs" truncate="end">
-          {title}
-        </Text>
+        {title ? (
+          <Tooltip label={title}>
+            <Text ta="center" fw={500} size="sm" mt="xs" truncate="end">
+              {title}
+            </Text>
+          </Tooltip>
+        ) : null}
 
-        {character ? <Text ta="center" c="dimmed" size="xs" truncate="end">
-          {character}
-        </Text> : null}
+        {character ? (
+          <Tooltip label={character}>
+            <Text ta="center" c="dimmed" size="xs" truncate="end">
+              {character}
+            </Text>
+          </Tooltip>
+        ) : null}
       </Card>
     </Link>
   );

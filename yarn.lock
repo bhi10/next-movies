@@ -4562,15 +4562,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-modal-image@npm:^2":
-  version: 2.6.3
-  resolution: "@types/react-modal-image@npm:2.6.3"
-  dependencies:
-    "@types/react": "npm:*"
-  checksum: b0bd7338b1113c8d6dbf0fa0b48fe1a7aa68723bc3a7e46c9ec2a2f9a41907bc41c19933849eefbebe68f9ba567246dbd6ab35b21f96938e7fa1323f0a132fe6
-  languageName: node
-  linkType: hard
-
 "@types/react@npm:*, @types/react@npm:>=16":
   version: 18.2.46
   resolution: "@types/react@npm:18.2.46"
@@ -11690,7 +11681,6 @@ __metadata:
     "@types/jest": "npm:^29.5.7"
     "@types/node": "npm:^20.8.10"
     "@types/react": "npm:18.2.34"
-    "@types/react-modal-image": "npm:^2"
     "@typescript-eslint/eslint-plugin": "npm:^6.9.1"
     "@typescript-eslint/parser": "npm:^6.9.1"
     add: "npm:^2.0.6"
@@ -11717,8 +11707,8 @@ __metadata:
     prettier: "npm:^3.0.3"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
-    react-modal-image: "npm:^2.6.0"
     react-redux: "npm:^9.1.0"
+    react-simple-image-viewer: "npm:^1.2.2"
     storybook: "npm:^7.5.2"
     storybook-dark-mode: "npm:^3.0.1"
     stylelint: "npm:^15.11.0"
@@ -13236,13 +13226,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-modal-image@npm:^2.6.0":
-  version: 2.6.0
-  resolution: "react-modal-image@npm:2.6.0"
-  checksum: ae44544abf9a0aa4bd2c6d2459734640289555ab32e66c87d7808d38def2272e70ed5f91d01bcc8b8fedb615bcc5daeee7c886e51efd3ed40df4266227941389
-  languageName: node
-  linkType: hard
-
 "react-number-format@npm:^5.3.1":
   version: 5.3.1
   resolution: "react-number-format@npm:5.3.1"
@@ -13335,6 +13318,16 @@ __metadata:
     "@types/react":
       optional: true
   checksum: dcd523ada602bd0a839c2032cadf0b3e4af55ee85acefee3760976a9cceaa4606927801b093bbb8bf3c2989c71e048f5428c2c6eb9e6681762e86356833d039b
+  languageName: node
+  linkType: hard
+
+"react-simple-image-viewer@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "react-simple-image-viewer@npm:1.2.2"
+  peerDependencies:
+    react: ^18.1.0
+    react-dom: ^18.1.0
+  checksum: 01cb9e77f9e6a039004d473400d5d299df4be7529a4b54aa7d1f8394292a18e402ac469604cbf077243a7ef0e809d0bc4d25d8c2632cd863320080f9ffdd5d11
   languageName: node
   linkType: hard
 
