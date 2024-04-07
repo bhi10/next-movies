@@ -1,6 +1,8 @@
 'use client';
 
 import { ImageSizes } from '@app/types';
+import { openImageViewer } from '@lib/features/App/appSlice';
+import { useAppDispatch } from '@lib/hooks';
 import { Carousel } from '@mantine/carousel';
 import { Image, MantineSpacing, StyleProp, Title } from '@mantine/core';
 import { getImgPath } from '@utils/common-utils';
@@ -26,15 +28,21 @@ function ImagesCarousel<T, K extends keyof T>({
   align = 'start',
   dragFree = true,
 }: ImagesCarouselProps<T, K>) {
-  if (images.length === 0) return '';
+  const dispatch = useAppDispatch();
 
+  const onImageClick = (index: number) => {
+    const arr = images.map(img => getImgPath(img[path] as string));
+    dispatch(openImageViewer({ images: arr, currentIndex: index }));
+  };
+
+  if (images.length === 0) return '';
 
   const slides = images.map((image, index) => {
     const imagePath = image[path] as string;
     const imageUrl = getImgPath(imagePath, imageSizes);
     return (
-      <Carousel.Slide key={index}>
-        <Image src={imageUrl}></Image>
+      <Carousel.Slide key={index} onClick={() => onImageClick(index)}>
+        <Image style={{ cursor: 'pointer' }} src={imageUrl}></Image>
       </Carousel.Slide>
     );
   });
@@ -52,4 +60,4 @@ function ImagesCarousel<T, K extends keyof T>({
   );
 }
 
-export default ImagesCarousel
+export default ImagesCarousel;

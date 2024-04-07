@@ -11708,6 +11708,7 @@ __metadata:
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-redux: "npm:^9.1.0"
+    react-simple-image-viewer: "npm:^1.2.2"
     storybook: "npm:^7.5.2"
     storybook-dark-mode: "npm:^3.0.1"
     stylelint: "npm:^15.11.0"
@@ -13317,6 +13318,16 @@ __metadata:
     "@types/react":
       optional: true
   checksum: dcd523ada602bd0a839c2032cadf0b3e4af55ee85acefee3760976a9cceaa4606927801b093bbb8bf3c2989c71e048f5428c2c6eb9e6681762e86356833d039b
+  languageName: node
+  linkType: hard
+
+"react-simple-image-viewer@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "react-simple-image-viewer@npm:1.2.2"
+  peerDependencies:
+    react: ^18.1.0
+    react-dom: ^18.1.0
+  checksum: 01cb9e77f9e6a039004d473400d5d299df4be7529a4b54aa7d1f8394292a18e402ac469604cbf077243a7ef0e809d0bc4d25d8c2632cd863320080f9ffdd5d11
   languageName: node
   linkType: hard
 

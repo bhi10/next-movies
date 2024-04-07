@@ -1,5 +1,6 @@
 import Header from '@components/AppShell/Header';
 import Navbar from '@components/AppShell/Navbar';
+import AppImageViewer from '@components/Pages/Home/AppImageViewer';
 import React from 'react';
 import AppDataProvider from './AppDataProvider';
 
@@ -16,6 +17,7 @@ function App({ children }: AppProps) {
         <Header></Header>
         {children}
       </div>
+      <AppImageViewer></AppImageViewer>
     </React.Fragment>
   );
 }

@@ -1,4 +1,4 @@
-const NancyAce = [
+export const NancyAce = [
   'https://i6.vipr.im/i/01537/b1q3lzdvd5mm.jpg',
   'https://i6.vipr.im/i/01537/sprlnb2230jz.jpg',
   'https://i6.vipr.im/i/01537/t4li4buotnbf.jpg',
