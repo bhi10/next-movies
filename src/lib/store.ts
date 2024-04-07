@@ -1,11 +1,12 @@
 import { combineSlices, configureStore } from '@reduxjs/toolkit';
+import appSlice from './features/App/appSlice';
+import configSlice from './features/Config/configSlice';
 import imagesSlice from './features/imagesSlice';
 import mediaSlice from './features/mediaSlice';
 import peopleSlice from './features/peopleSlice';
 import trendingSlice from './features/trendingSlice';
-import configSlice from './features/Config/configSlice';
 
-const rootReducer = combineSlices(trendingSlice, mediaSlice, imagesSlice, peopleSlice, configSlice);
+const rootReducer = combineSlices(appSlice, trendingSlice, mediaSlice, imagesSlice, peopleSlice, configSlice);
 
 export const makeStore = () => {
   return configureStore({

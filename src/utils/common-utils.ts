@@ -1,4 +1,4 @@
-import { CrewMember, ExternalIds, ImageWidthSizes } from '@app/types';
+import { CrewMember, ExternalIds, ImageSizes } from '@app/types';
 import { apiImgUrl, faceBookBaseUrl, instagramBaseUrl, tiktokBaseUrl, twitterBaseUrl, youtubeBaseUrl } from './constants';
 
 // Social Links
@@ -24,9 +24,9 @@ export const directorDetails = (crew: CrewMember[] | undefined): CrewMember[] =>
   return crew.filter(member => member.job === 'Director');
 };
 
-export const getImgPath = (path: string | null, widthSize: ImageWidthSizes = 'original'): string => {
+export const getImgPath = (path: string | null, size: ImageSizes = 'original'): string => {
   if (!path) return '';
-  return apiImgUrl + '/' + widthSize + path;
+  return apiImgUrl + '/' + size + path;
 };
 
 export const getYearFromDate = (dateString: string): number | string => {
