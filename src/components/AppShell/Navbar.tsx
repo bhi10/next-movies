@@ -34,7 +34,7 @@ export default function Navbar() {
 
   const links = drawerItems.map((item, index) => (
     <Link href={item.href} key={index}>
-      <NavbarLink icon={item.icon} label={item.label} active={pathName === item.name} ></NavbarLink>
+      <NavbarLink icon={item.icon} label={item.label} active={pathName === item.name}></NavbarLink>
     </Link>
   ));
 

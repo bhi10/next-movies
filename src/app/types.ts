@@ -466,7 +466,7 @@ export interface CombinedCredits {
   id?: number;
 }
 
-export type ImageWidthSizes =
+export type ImageSizes =
   | 'w500'
   | 'w1920_and_h800_multi_faces'
   | 'original'
@@ -482,4 +482,5 @@ export type ImageWidthSizes =
   | 'w600_and_h900_bestv2'
   | 'w138_and_h175_face'
   | 'w1066_and_h600_bestv2'
-  | 'w150_and_h225_bestv2';
+  | 'w150_and_h225_bestv2'
+  | 'w440_and_h660_face';
