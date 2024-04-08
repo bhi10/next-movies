@@ -2225,7 +2225,10 @@ export const Posters: Story = {
   args: {
     label: 'Backdrops',
     path: 'file_path',
-    slideSize: { base: '100%', xs: '100%', sm: '33.3333333%', md: '25%', lg: '20%', xl: '10%' },
+    slideSize: { base: '50%', xs: '50%', sm: '33.3333333%', md: '25%', lg: '20%', xl: '10%' },
+    slideGap: { base: 'xs' },
+    align: 'center',
+    loop: true,
     images: postersImages,
   },
 };

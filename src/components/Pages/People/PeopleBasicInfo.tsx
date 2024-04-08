@@ -17,7 +17,7 @@ function PeopleBasicInfo({ people }: MediaBasicInfoProps) {
   }
 
   let ageString: number = 0;
-  const { birthday, deathday, known_for_department, gender, place_of_birth, external_ids, homepage } = people;
+  const { birthday, deathday, known_for_department, gender, place_of_birth, external_ids, homepage, biography } = people;
 
   if (birthday && deathday) {
     ageString = calculateAge(birthday, deathday);
@@ -57,7 +57,7 @@ function PeopleBasicInfo({ people }: MediaBasicInfoProps) {
 
         {place_of_birth && <FieldView label="Place of Birth" value={place_of_birth}></FieldView>}
 
-        {people.biography && <FieldView label="Biography" value={people.biography} lineClamp></FieldView>}
+        {biography && <FieldView label="Biography" value={biography} lineClamp></FieldView>}
 
         {external_ids && <PeopleExternalLinks external={external_ids} homepage={homepage}></PeopleExternalLinks>}
       </Flex>
