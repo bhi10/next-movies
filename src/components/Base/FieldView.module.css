@@ -25,3 +25,8 @@
   color: var(--mantine-color-blue-filled);
   cursor: pointer;
 }
+
+.paragraph {
+  margin-top: 4px;
+  margin-bottom: 12px;
+}

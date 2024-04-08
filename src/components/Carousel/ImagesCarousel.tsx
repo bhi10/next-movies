@@ -16,6 +16,7 @@ interface ImagesCarouselProps<T, K extends keyof T> {
   slideGap?: StyleProp<MantineSpacing>;
   align?: number | 'center' | 'end' | 'start';
   dragFree?: boolean;
+  loop?: boolean;
 }
 
 function ImagesCarousel<T, K extends keyof T>({
@@ -27,6 +28,7 @@ function ImagesCarousel<T, K extends keyof T>({
   slideGap = { base: 0, sm: 'md' },
   align = 'start',
   dragFree = true,
+  loop = false,
 }: ImagesCarouselProps<T, K>) {
   const dispatch = useAppDispatch();
 
@@ -53,7 +55,7 @@ function ImagesCarousel<T, K extends keyof T>({
           {label}
         </Title>
       ) : null}
-      <Carousel slideSize={slideSize} slideGap={slideGap} align={align} dragFree={dragFree}>
+      <Carousel slideSize={slideSize} slideGap={slideGap} align={align} dragFree={dragFree} loop={loop}>
         {slides}
       </Carousel>
     </>

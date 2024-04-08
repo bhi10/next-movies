@@ -1,5 +1,5 @@
 import { Text, Title } from '@mantine/core';
-import { CSSProperties, MouseEventHandler, useState } from 'react';
+import { CSSProperties, MouseEventHandler, useMemo, useState } from 'react';
 import classes from './FieldView.module.css';
 
 interface FieldViewProps {
@@ -44,6 +44,32 @@ interface FieldViewProps {
 
 function FieldView({ children, label, value, placeHolder = '-', disableValue, onClick, styles, dark, lineClamp }: FieldViewProps): JSX.Element {
   const [lineClampNumber, setLineClampNumber] = useState(4);
+
+  const aValue = useMemo(() => {
+    if (typeof value === 'string' && value !== '') {
+      return value.split('\n').filter(e => !!e);
+    }
+    return [];
+  }, [value]);
+
+  const showReadMore = lineClamp && value && value.length > 600 && lineClampNumber !== 0;
+
+  const textContent = () => {
+    if (!value) {
+      return placeHolder;
+    }
+
+    if (value && aValue.length === 0) {
+      return value;
+    }
+
+    return aValue.map((paragraph, index) => (
+      <p key={index} className={classes.paragraph}>
+        {paragraph}
+      </p>
+    ));
+  };
+
   return (
     <div style={styles} className={classes.fieldView}>
       <Title order={6} c={dark ? 'dark.0' : ''} opacity={0.6}>
@@ -59,11 +85,11 @@ function FieldView({ children, label, value, placeHolder = '-', disableValue, on
           lineClamp={lineClamp ? lineClampNumber : 0}
           onClick={onClick}
         >
-          {value || placeHolder}
+          {textContent()}
         </Text>
       )}
 
-      {lineClamp && value && value.length > 600 && lineClampNumber !== 0 ? (
+      {showReadMore ? (
         <div className={classes.read_more}>
           <a className={classes.anchor} onClick={() => setLineClampNumber(0)}>
             Read More{' '}
