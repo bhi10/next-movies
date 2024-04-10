@@ -52,7 +52,7 @@ function FieldView({ children, label, value, placeHolder = '-', disableValue, on
     return [];
   }, [value]);
 
-  const showReadMore = lineClamp && value && value.length > 600 && lineClampNumber !== 0;
+  const showReadMore = lineClamp && value && lineClampNumber !== 0;
 
   const textContent = () => {
     if (!value) {
