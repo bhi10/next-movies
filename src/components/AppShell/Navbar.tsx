@@ -3,7 +3,6 @@
 import { Stack, useComputedColorScheme, useMantineColorScheme } from '@mantine/core';
 import { IconDeviceTv, IconHome2, IconMoon, IconMovie, IconSun, IconUsers } from '@tabler/icons-react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import classes from './Navbar.module.css';
 import NavbarLink from './NavbarLink';
 
@@ -21,11 +20,13 @@ const drawerItems: NavbarItems[] = [
   { icon: IconUsers, label: 'People', name: 'people', href: '/people' },
 ];
 
-export default function Navbar() {
+interface NavbarProps {
+  pathName: string;
+}
+
+export default function Navbar({ pathName = '' }: NavbarProps) {
   const { setColorScheme } = useMantineColorScheme();
   const computedColorScheme = useComputedColorScheme('light', { getInitialValueInEffect: true });
-
-  const pathName = usePathname().split('/')[1];
 
   const onThemeChange = () => {
     const value = computedColorScheme === 'light' ? 'dark' : 'light';
