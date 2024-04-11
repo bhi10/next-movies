@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
@@ -8,7 +7,7 @@ interface Context {
   params: undefined;
 }
 
-export const api = axios.create({
+const api = axios.create({
   baseURL: process.env.TMDB_API_BASE_URL,
   params: {
     api_key: process.env.TMDB_API_KEY,
@@ -16,7 +15,7 @@ export const api = axios.create({
   },
 });
 
-export const fetchApi = cache((url: string, params?: any) =>
+const fetchApi = cache((url: string, params?: any) =>
   api
     .get(url, { params })
     .then(res => res.data)
