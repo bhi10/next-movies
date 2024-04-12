@@ -1,6 +1,6 @@
 'use client';
 
-import { getTrending, trendingList } from '@/lib/features/trendingSlice';
+import { getTrending, trendingList } from '@lib/features/Home/trendingSlice';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { useEffect } from 'react';
 import MediaCarousel from './MediaCarousel';

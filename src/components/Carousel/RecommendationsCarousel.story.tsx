@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { RecommendationMedia } from '@lib/features/Movie/types';
 import RecommendationsCarousel from './RecommendationsCarousel';
 
 const meta: Meta<typeof RecommendationsCarousel> = {
@@ -8,7 +9,15 @@ const meta: Meta<typeof RecommendationsCarousel> = {
 
 export default meta;
 
-type Story = StoryObj<typeof RecommendationsCarousel>;
+type Story = StoryObj<
+  typeof RecommendationsCarousel<
+    RecommendationMedia,
+    keyof RecommendationMedia,
+    keyof RecommendationMedia,
+    keyof RecommendationMedia,
+    keyof RecommendationMedia
+  >
+>;
 
 export const Default: Story = {
   args: {
@@ -392,5 +401,9 @@ export const Default: Story = {
         vote_count: 5784,
       },
     ],
+    poster_path: 'poster_path',
+    release_date_path: 'release_date',
+    id_path: 'id',
+    name_path: 'title',
   },
 };

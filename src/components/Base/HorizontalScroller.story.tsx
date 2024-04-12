@@ -253,7 +253,9 @@ type Story = StoryObj<typeof HorizontalScroller>;
 
 export const Default: Story = {
   args: {
-    children: casts.map((cast, index) => <Cast cast={cast} key={index} />),
+    children: casts.map((cast, index) => (
+      <Cast cast={cast} key={index} id={cast.id} profile_path={cast.profile_path} name={cast.name} character={cast.character} />
+    )),
     gap: 'md',
   },
 };
