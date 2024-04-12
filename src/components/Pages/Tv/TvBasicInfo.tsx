@@ -1,31 +1,27 @@
-import { Media, MediaType } from '@app/types';
 import DateDisplay from '@components/Base/DateDisplay';
 import FieldView from '@components/Base/FieldView';
 import Poster from '@components/Cards/Poster';
 import GenreChipList from '@components/Genre/GenreChipList';
+import { MediaTv } from '@lib/features/Tv/types';
 import { Container, Divider, Flex, SimpleGrid, Text, Title } from '@mantine/core';
-import { directorDetails, formatMovieDuration, getImgPath, getYearFromDate, moneyFormat } from '@utils/common-utils';
+import { directorDetails, formatMovieDuration, getImgPath, getYearFromDate } from '@utils/common-utils';
 import Link from 'next/link';
-import classes from './MediaBasicInfo.module.css';
+import classes from './TvBasicInfo.module.css';
 
-export interface MediaBasicInfoProps {
-  mediaType: MediaType;
-  media: Media | undefined;
+export interface TvBasicInfoProps {
+  media: MediaTv | undefined;
   language?: string;
 }
 
-function MediaBasicInfo({ mediaType = 'movie', media, language = '' }: MediaBasicInfoProps) {
+function TvBasicInfo({ media, language = '' }: TvBasicInfoProps) {
   if (!media) {
     return '';
   }
 
-  const title = mediaType === 'movie' ? media.title : media.name;
-  const releaseDate = mediaType === 'movie' ? media.release_date : media.first_air_date;
-  const year = releaseDate ? ` (${getYearFromDate(releaseDate || '')})` : '';
-
   const director = media && media.credits && directorDetails(media.credits.crew)[0];
 
-  const { status, release_date, genres, spoken_languages, budget, revenue, overview } = media;
+  const { name, first_air_date, status, genres, spoken_languages, overview } = media;
+  const year = first_air_date ? ` (${getYearFromDate(first_air_date || '')})` : '';
 
   return (
     <Container
@@ -38,20 +34,20 @@ function MediaBasicInfo({ mediaType = 'movie', media, language = '' }: MediaBasi
         backgroundSize: 'cover',
       }}
     >
-      <Poster poster_path={media.poster_path} title={mediaType === 'movie' ? media.title : media.name}></Poster>
+      <Poster poster_path={media.poster_path} title={media.name}></Poster>
       <div className={classes.headerDetail}>
         <Title order={2} className={classes.title}>
-          {title}
+          {name}
           <span className={classes.secondaryColor}>{year}</span>
         </Title>
 
         {genres ? <GenreChipList genres={genres}></GenreChipList> : null}
 
         <Flex mt={4} align="center" gap={8}>
-          {release_date && <DateDisplay date={release_date} size="xs" c={`gray.5`}></DateDisplay>}
-          {release_date && <Divider orientation="vertical" color="gray.5"></Divider>}
+          {first_air_date && <DateDisplay date={first_air_date} size="xs" c={`gray.5`}></DateDisplay>}
+          {first_air_date && <Divider orientation="vertical" color="gray.5"></Divider>}
           <Text span size="xs" c={`gray.5`}>
-            {formatMovieDuration(media.runtime)}
+            {formatMovieDuration(media.episode_run_time[0])}
           </Text>
         </Flex>
 
@@ -77,14 +73,10 @@ function MediaBasicInfo({ mediaType = 'movie', media, language = '' }: MediaBasi
           {spoken_languages && spoken_languages.length !== 0 ? (
             <FieldView label={'Spoken Languages'} value={spoken_languages.map(lang => lang.english_name).join(', ')} dark></FieldView>
           ) : null}
-
-          {budget ? <FieldView label={'Budget'} value={moneyFormat(budget)} dark></FieldView> : null}
-
-          {revenue ? <FieldView label={'Revenue'} value={moneyFormat(revenue)} dark></FieldView> : null}
         </SimpleGrid>
       </div>
     </Container>
   );
 }
 
-export default MediaBasicInfo;
+export default TvBasicInfo;

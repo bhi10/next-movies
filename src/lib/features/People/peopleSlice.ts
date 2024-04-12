@@ -1,8 +1,8 @@
 import { People } from '@/app/types';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchApi } from '../api';
-import { createAppSlice } from '../createAppSlice';
-import { RootState } from '../store';
+import { fetchApi } from '../../api';
+import { createAppSlice } from '../../createAppSlice';
+import { RootState } from '../../store';
 
 export interface PeopleSliceState {
   detail: People | undefined;

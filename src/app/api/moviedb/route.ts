@@ -25,8 +25,12 @@ const fetchApi = cache((url: string, params?: any) =>
 );
 
 export async function GET(request: NextRequest, context: Context) {
-  const path = request.nextUrl.pathname
-  const response = await fetchApi('/trending/all/week');
+  try {
+    const path = request.nextUrl.pathname;
+    const response = await fetchApi('/trending/all/week');
 
-  return NextResponse.json({ results: response.results, path });
+    return NextResponse.json({ results: response.results, path });
+  } catch (error) {
+    return NextResponse.json(error);
+  }
 }
