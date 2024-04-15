@@ -19,15 +19,11 @@ function SeasonBasicInfo({ season, language = '' }: SeasonBasicInfoProps) {
     return '';
   }
 
-
   const { name, poster_path, air_date, overview } = season;
   const year = air_date ? ` (${getYearFromDate(air_date || '')})` : '';
 
   return (
-    <Container
-      fluid
-      className={classes.header}
-    >
+    <Container fluid className={classes.header}>
       <Poster poster_path={poster_path} title={season.name}></Poster>
       <div className={classes.headerDetail}>
         <Title order={2} className={classes.title}>
@@ -35,16 +31,11 @@ function SeasonBasicInfo({ season, language = '' }: SeasonBasicInfoProps) {
           <span className={classes.secondaryColor}>{year}</span>
         </Title>
 
-
         <Flex mt={4} align="center" gap={8}>
           {air_date && <DateDisplay date={air_date} size="xs" c={`gray.5`}></DateDisplay>}
         </Flex>
 
-        
-
         {overview ? <FieldView styles={{ marginTop: '8px' }} label="Overview" value={overview} dark lineClamp></FieldView> : null}
-
-       
       </div>
     </Container>
   );

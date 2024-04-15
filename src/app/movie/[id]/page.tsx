@@ -22,7 +22,7 @@ function MediaMovie({ params }: MediaMovieProps) {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getMovie(params.id));
-    dispatch(getImages({type: media_type, id: params.id}))
+    dispatch(getImages({ type: media_type, id: params.id }));
   }, []);
 
   const movie = useAppSelector(movieDetail);
