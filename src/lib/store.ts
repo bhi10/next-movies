@@ -5,8 +5,10 @@ import trendingSlice from './features/Home/trendingSlice';
 import movieSlice from './features/Movie/movieSlice';
 import peopleSlice from './features/People/peopleSlice';
 import tvSlice from './features/Tv/tvSlice';
+import imagesSlice from './features/imagesSlice';
+import seasonSlice from './features/Tv/Season/seasonSlice';
 
-const rootReducer = combineSlices(appSlice, trendingSlice, peopleSlice, configSlice, movieSlice, tvSlice);
+const rootReducer = combineSlices(appSlice, trendingSlice, peopleSlice, configSlice, movieSlice, tvSlice, imagesSlice, seasonSlice);
 
 export const makeStore = () => {
   return configureStore({

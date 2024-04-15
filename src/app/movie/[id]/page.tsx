@@ -5,8 +5,9 @@ import CastCarousel from '@components/Carousel/CastCarousel';
 import ImagesCarousel from '@components/Carousel/ImagesCarousel';
 import RecommendationsCarousel from '@components/Carousel/RecommendationsCarousel';
 import MovieBasicInfo from '@components/Pages/Movie/MovieBasicInfo';
-import { language } from '@lib/features/Config/selectors';
+import { imagesList, language } from '@lib/features/Config/selectors';
 import { getMovie, movieDetail } from '@lib/features/Movie/movieSlice';
+import { getImages } from '@lib/features/imagesSlice';
 import { useAppDispatch, useAppSelector } from '@lib/hooks';
 import { Container, Flex } from '@mantine/core';
 import { useEffect } from 'react';
@@ -21,10 +22,11 @@ function MediaMovie({ params }: MediaMovieProps) {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getMovie(params.id));
+    dispatch(getImages({ type: media_type, id: params.id }));
   }, []);
 
   const movie = useAppSelector(movieDetail);
-  const images = movie?.images;
+  const images = useAppSelector(imagesList);
   const lang = language(movie?.original_language);
 
   if (!movie) return '';

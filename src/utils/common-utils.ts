@@ -13,10 +13,9 @@ export const formatMovieDuration = (durationInMinutes: number | undefined): stri
   const hours = Math.floor(durationInMinutes / 60);
   const minutes = durationInMinutes % 60;
 
-  // Use template literals to format the output
-  const formattedDuration = `${hours}h ${minutes}m`;
+  if (!hours) return `${minutes}m`;
 
-  return formattedDuration;
+  return `${hours}h ${minutes}m`;
 };
 
 export const directorDetails = (crew: CrewMember[] | undefined): CrewMember[] => {

@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import MediaBasicInfo from './TvBasicInfo';
+import TvBasicInfo from './TvBasicInfo';
 
-const meta: Meta<typeof MediaBasicInfo> = {
-  component: MediaBasicInfo,
+const meta: Meta<typeof TvBasicInfo> = {
+  component: TvBasicInfo,
 };
 
 export default meta;
-type Story = StoryObj<typeof MediaBasicInfo>;
+type Story = StoryObj<typeof TvBasicInfo>;
 
 export const Loki: Story = {
   args: {

@@ -1,0 +1,6 @@
+.poster {
+  width: 150px;
+  min-width: 150px;
+  cursor: pointer;
+  height: 100%;
+}

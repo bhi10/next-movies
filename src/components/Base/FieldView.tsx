@@ -89,7 +89,7 @@ function FieldView({ children, label, value, placeHolder = '-', disableValue, on
         </Text>
       )}
 
-      {showReadMore ? (
+      {showReadMore && value && value.length > 500 ? (
         <div className={classes.read_more}>
           <a className={classes.anchor} onClick={() => setLineClampNumber(0)}>
             Read More{' '}

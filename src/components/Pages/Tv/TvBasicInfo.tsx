@@ -45,10 +45,6 @@ function TvBasicInfo({ media, language = '' }: TvBasicInfoProps) {
 
         <Flex mt={4} align="center" gap={8}>
           {first_air_date && <DateDisplay date={first_air_date} size="xs" c={`gray.5`}></DateDisplay>}
-          {first_air_date && <Divider orientation="vertical" color="gray.5"></Divider>}
-          <Text span size="xs" c={`gray.5`}>
-            {formatMovieDuration(media.episode_run_time[0])}
-          </Text>
         </Flex>
 
         {media.tagline ? (
