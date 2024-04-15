@@ -28,7 +28,7 @@ export default function CastCarousel<T, K extends keyof T, L extends keyof T, M 
     const name = cast[name_path] as string;
     const character = cast[character_path] as string;
 
-    return <Cast cast={cast} key={index} id={id} profile_path={profileImagePath} name={name} character={character} />;
+    return <Cast key={index} id={id} profile_path={profileImagePath} name={name} character={character} />;
   });
   return (
     <>

@@ -24,7 +24,7 @@ export interface MediaTv {
   poster_path: string; // Adjust if poster_path can be null
   production_companies: ProductionCompany[];
   production_countries: ProductionCountry[];
-  seasons: Seasons[];
+  seasons: TvSeasons[];
   spoken_languages: SpokenLanguage[];
   status: string;
   tagline: string | null; // Adjust if tagline can be null
@@ -73,13 +73,13 @@ interface Networks {
   origin_country: string;
 }
 
-interface Seasons {
+export interface TvSeasons {
   air_date: string;
   episode_count: number;
   id: number;
   name: string;
   overview: string;
-  poster_path: string | null; // Adjust if poster_path can be null
+  poster_path: string | null;
   season_number: number;
   vote_average: number;
 }

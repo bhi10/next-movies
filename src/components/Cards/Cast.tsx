@@ -5,15 +5,14 @@ import { getImgPath } from '@utils/common-utils';
 import Link from 'next/link';
 import classes from './Cast.module.css';
 
-interface CastProps<T> {
-  cast: T;
+interface CastProps {
   id: number;
   profile_path: string;
   name: string;
   character: string;
 }
 
-export default function Cast<T>({ cast, id, profile_path, name, character }: CastProps<T>) {
+export default function Cast({ id, profile_path, name, character }: CastProps) {
   return (
     <Link className="remove-text-decoration" href={`/people/${id}`}>
       <Card className={classes.poster} shadow="sm" padding="xs" radius="md" withBorder>

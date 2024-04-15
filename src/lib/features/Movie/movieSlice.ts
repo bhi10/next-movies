@@ -19,7 +19,7 @@ const mediaType = 'movie';
 export const getMovie = createAsyncThunk(`movie`, async (id: string) => {
   try {
     const media = await fetchApi(`/${mediaType}/${id}`, {
-      append_to_response: 'credits,images,recommendations,similar',
+      append_to_response: 'credits,recommendations,similar',
       include_image_language: 'en',
     });
     return media;

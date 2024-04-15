@@ -18,7 +18,7 @@ function MovieBasicInfo({ media, language = '' }: MovieBasicInfoProps) {
     return '';
   }
 
-  const director = media && media.credits && directorDetails(media.credits.crew)[0];
+  const directors = media && media.credits && directorDetails(media.credits.crew);
   const { title, status, release_date, genres, spoken_languages, budget, revenue, overview } = media;
   const year = release_date ? ` (${getYearFromDate(release_date || '')})` : '';
 
@@ -59,11 +59,13 @@ function MovieBasicInfo({ media, language = '' }: MovieBasicInfoProps) {
         {overview ? <FieldView styles={{ marginTop: '8px' }} label="Overview" value={overview} dark lineClamp></FieldView> : null}
 
         <SimpleGrid mt={12} cols={2} spacing="sm">
-          {director ? (
-            <Link className="remove-text-decoration" href={`/people/${director.id}`}>
-              <FieldView label={director.job} value={director.name} dark></FieldView>
-            </Link>
-          ) : null}
+          {directors
+            ? directors.map(director => (
+                <Link className="remove-text-decoration" href={`/people/${director.id}`}>
+                  <FieldView label={director.job} value={director.name} dark></FieldView>
+                </Link>
+              ))
+            : null}
 
           {status ? <FieldView label={'Status'} value={status} dark></FieldView> : null}
 

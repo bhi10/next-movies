@@ -4,9 +4,11 @@ import { MediaType } from '@app/types';
 import CastCarousel from '@components/Carousel/CastCarousel';
 import ImagesCarousel from '@components/Carousel/ImagesCarousel';
 import RecommendationsCarousel from '@components/Carousel/RecommendationsCarousel';
+import SeasonCardCarousel from '@components/Pages/Tv/SeasonCardCarousel';
 import TvBasicInfo from '@components/Pages/Tv/TvBasicInfo';
-import { language } from '@lib/features/Config/selectors';
+import { imagesList, language } from '@lib/features/Config/selectors';
 import { getTv, tvDetail } from '@lib/features/Tv/tvSlice';
+import { getImages } from '@lib/features/imagesSlice';
 import { useAppDispatch, useAppSelector } from '@lib/hooks';
 import { Container, Flex } from '@mantine/core';
 import { useEffect } from 'react';
@@ -21,25 +23,31 @@ function Media({ params }: MediaProps) {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getTv(params.id));
+    dispatch(getImages({ type: media_type, id: params.id }));
   }, []);
 
-  const media = useAppSelector(tvDetail);
-  const images = media?.images;
-  const lang = language(media?.original_language);
+  const tv = useAppSelector(tvDetail);
+  const images = useAppSelector(imagesList);
+  const lang = language(tv?.original_language);
 
-  if (!media) return '';
+  console.log({ tv });
+
+  if (!tv) return '';
+
+  const { seasons } = tv;
 
   return (
     <Flex direction="column" pb={32}>
-      <TvBasicInfo media={media} language={lang?.english_name}></TvBasicInfo>
+      <TvBasicInfo media={tv} language={lang?.english_name}></TvBasicInfo>
       <Container fluid style={{ width: '100%' }}>
         <CastCarousel
-          casts={media?.credits?.cast || []}
+          casts={tv?.credits?.cast || []}
           id_path="id"
           profile_path="profile_path"
           name_path="name"
           character_path="character"
         ></CastCarousel>
+        <SeasonCardCarousel tvId={tv.id} seasons={seasons}></SeasonCardCarousel>
         <ImagesCarousel label="Backdrops" images={images?.backdrops} path="file_path" imageSizes="w1066_and_h600_bestv2"></ImagesCarousel>
         <ImagesCarousel
           label="Posters"
@@ -50,7 +58,7 @@ function Media({ params }: MediaProps) {
           slideGap={{ base: 'xs' }}
         ></ImagesCarousel>
         <RecommendationsCarousel
-          recommendations={media.recommendations?.results}
+          recommendations={tv.recommendations?.results}
           media_type={media_type}
           poster_path="poster_path"
           release_date_path="first_air_date"
@@ -59,7 +67,7 @@ function Media({ params }: MediaProps) {
         ></RecommendationsCarousel>
         <RecommendationsCarousel
           title="Similar"
-          recommendations={media.similar?.results}
+          recommendations={tv.similar?.results}
           media_type={media_type}
           poster_path="poster_path"
           release_date_path="first_air_date"
