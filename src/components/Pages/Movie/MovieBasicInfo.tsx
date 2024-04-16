@@ -60,8 +60,8 @@ function MovieBasicInfo({ media, language = '' }: MovieBasicInfoProps) {
 
         <SimpleGrid mt={12} cols={2} spacing="sm">
           {directors
-            ? directors.map(director => (
-                <Link className="remove-text-decoration" href={`/people/${director.id}`}>
+            ? directors.map((director, index) => (
+                <Link key={index} className="remove-text-decoration" href={`/people/${director.id}`}>
                   <FieldView label={director.job} value={director.name} dark></FieldView>
                 </Link>
               ))
