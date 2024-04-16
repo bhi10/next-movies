@@ -18,7 +18,7 @@ function TvBasicInfo({ media, language = '' }: TvBasicInfoProps) {
     return '';
   }
 
-  const director = media && media.credits && directorDetails(media.credits.crew)[0];
+  const directors = media && media.credits && directorDetails(media.credits.crew);
 
   const { name, first_air_date, status, genres, spoken_languages, overview } = media;
   const year = first_air_date ? ` (${getYearFromDate(first_air_date || '')})` : '';
@@ -56,11 +56,13 @@ function TvBasicInfo({ media, language = '' }: TvBasicInfoProps) {
         {overview ? <FieldView styles={{ marginTop: '8px' }} label="Overview" value={overview} dark lineClamp></FieldView> : null}
 
         <SimpleGrid mt={12} cols={2} spacing="sm">
-          {director ? (
-            <Link className="remove-text-decoration" href={`/people/${director.id}`}>
-              <FieldView label={director.job} value={director.name} dark></FieldView>
-            </Link>
-          ) : null}
+          {directors
+            ? directors.map((director, index) => (
+                <Link key={index} className="remove-text-decoration" href={`/people/${director.id}`}>
+                  <FieldView label={director.job} value={director.name} dark></FieldView>
+                </Link>
+              ))
+            : null}
 
           {status ? <FieldView label={'Status'} value={status} dark></FieldView> : null}
 
