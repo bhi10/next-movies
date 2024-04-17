@@ -1,7 +1,7 @@
 'use client';
 
 import ImagesCarousel from '@components/Carousel/ImagesCarousel';
-import SeasonBasicInfo from '@components/Pages/Tv/SeasonBasicInfo';
+import SeasonBasicInfo from '@components/Pages/Season/SeasonBasicInfo';
 import { getSeason, seasonDetail } from '@lib/features/Tv/Season/seasonSlice';
 import { useAppDispatch, useAppSelector } from '@lib/hooks';
 import { Container, Flex } from '@mantine/core';
@@ -18,7 +18,6 @@ function Season({ params }: SeasonProps) {
   }, []);
 
   const season = useAppSelector(seasonDetail);
-  console.log({ season });
 
   return (
     <Flex direction="column" pb={32}>
@@ -31,6 +30,8 @@ function Season({ params }: SeasonProps) {
           imageSizes="w440_and_h660_face"
           slideSize={{ base: '50%', xs: '50%', sm: '33.3333333%', md: '25%', lg: '20%', xl: '10%' }}
           slideGap={{ base: 'xs' }}
+          loop
+          showCount
         ></ImagesCarousel>
       </Container>
     </Flex>

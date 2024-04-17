@@ -4,7 +4,7 @@ import { MediaType } from '@app/types';
 import CastCarousel from '@components/Carousel/CastCarousel';
 import ImagesCarousel from '@components/Carousel/ImagesCarousel';
 import RecommendationsCarousel from '@components/Carousel/RecommendationsCarousel';
-import SeasonCardCarousel from '@components/Pages/Tv/SeasonCardCarousel';
+import SeasonCardCarousel from '@components/Pages/Season/SeasonCardCarousel';
 import TvBasicInfo from '@components/Pages/Tv/TvBasicInfo';
 import { imagesList, language } from '@lib/features/Config/selectors';
 import { getTv, tvDetail } from '@lib/features/Tv/tvSlice';
@@ -30,8 +30,6 @@ function Media({ params }: MediaProps) {
   const images = useAppSelector(imagesList);
   const lang = language(tv?.original_language);
 
-  console.log({ tv });
-
   if (!tv) return '';
 
   const { seasons } = tv;
@@ -48,7 +46,14 @@ function Media({ params }: MediaProps) {
           character_path="character"
         ></CastCarousel>
         <SeasonCardCarousel tvId={tv.id} seasons={seasons}></SeasonCardCarousel>
-        <ImagesCarousel label="Backdrops" images={images?.backdrops} path="file_path" imageSizes="w1066_and_h600_bestv2"></ImagesCarousel>
+        <ImagesCarousel
+          label="Backdrops"
+          images={images?.backdrops}
+          path="file_path"
+          imageSizes="w1066_and_h600_bestv2"
+          loop
+          showCount
+        ></ImagesCarousel>
         <ImagesCarousel
           label="Posters"
           images={images?.posters}
@@ -56,6 +61,8 @@ function Media({ params }: MediaProps) {
           imageSizes="w440_and_h660_face"
           slideSize={{ base: '50%', xs: '50%', sm: '33.3333333%', md: '25%', lg: '20%', xl: '10%' }}
           slideGap={{ base: 'xs' }}
+          loop
+          showCount
         ></ImagesCarousel>
         <RecommendationsCarousel
           recommendations={tv.recommendations?.results}
