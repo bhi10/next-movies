@@ -42,7 +42,14 @@ function MediaMovie({ params }: MediaMovieProps) {
           name_path="name"
           character_path="character"
         ></CastCarousel>
-        <ImagesCarousel label="Backdrops" images={images?.backdrops} path="file_path" imageSizes="w1066_and_h600_bestv2"></ImagesCarousel>
+        <ImagesCarousel
+          label="Backdrops"
+          images={images?.backdrops}
+          path="file_path"
+          imageSizes="w1066_and_h600_bestv2"
+          loop
+          showCount
+        ></ImagesCarousel>
         <ImagesCarousel
           label="Posters"
           images={images?.posters}
@@ -50,6 +57,8 @@ function MediaMovie({ params }: MediaMovieProps) {
           imageSizes="w440_and_h660_face"
           slideSize={{ base: '50%', xs: '50%', sm: '33.3333333%', md: '25%', lg: '20%', xl: '10%' }}
           slideGap={{ base: 'xs' }}
+          loop
+          showCount
         ></ImagesCarousel>
         <RecommendationsCarousel
           recommendations={movie.recommendations?.results}

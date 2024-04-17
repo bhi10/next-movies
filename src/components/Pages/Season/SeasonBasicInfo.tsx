@@ -1,13 +1,10 @@
 import DateDisplay from '@components/Base/DateDisplay';
 import FieldView from '@components/Base/FieldView';
 import Poster from '@components/Cards/Poster';
-import GenreChipList from '@components/Genre/GenreChipList';
-import { MediaTv } from '@lib/features/Tv/types';
-import { Container, Divider, Flex, SimpleGrid, Text, Title } from '@mantine/core';
-import { directorDetails, formatMovieDuration, getImgPath, getYearFromDate } from '@utils/common-utils';
-import Link from 'next/link';
-import classes from './SeasonBasicInfo.module.css';
 import { Season } from '@lib/features/Tv/Season/types';
+import { Container, Flex, Title } from '@mantine/core';
+import { getYearFromDate } from '@utils/common-utils';
+import classes from './SeasonBasicInfo.module.css';
 
 export interface SeasonBasicInfoProps {
   season: Season | undefined;

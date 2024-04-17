@@ -1,7 +1,7 @@
 export interface Season {
   _id: string;
   air_date: string;
-  episodes: Episode[];
+  episodes: SeasonEpisode[];
   name: string;
   overview: string;
   id: number;
@@ -11,7 +11,7 @@ export interface Season {
   images?: SeasonImages;
 }
 
-interface Episode {
+export interface SeasonEpisode {
   air_date: string;
   episode_number: number;
   id: number;
