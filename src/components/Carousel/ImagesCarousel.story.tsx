@@ -188,6 +188,6 @@ export const Posters: Story = {
     align: 'start',
     loop: true,
     images: postersImages,
-    showCount: true
+    showCount: true,
   },
 };

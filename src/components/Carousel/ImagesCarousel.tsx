@@ -17,7 +17,7 @@ interface ImagesCarouselProps<T, K extends keyof T> {
   align?: number | 'center' | 'end' | 'start';
   dragFree?: boolean;
   loop?: boolean;
-  showCount?: boolean
+  showCount?: boolean;
 }
 
 function ImagesCarousel<T, K extends keyof T>({
@@ -30,7 +30,7 @@ function ImagesCarousel<T, K extends keyof T>({
   align = 'start',
   dragFree = true,
   loop = false,
-  showCount = false
+  showCount = false,
 }: ImagesCarouselProps<T, K>) {
   const dispatch = useAppDispatch();
 
