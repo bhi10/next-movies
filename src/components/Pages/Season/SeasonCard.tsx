@@ -10,13 +10,13 @@ export interface SeasonCardProps {
 }
 
 function SeasonCard({ tvId, season }: SeasonCardProps) {
-  const { name, poster_path, episode_count, air_date } = season;
+  const { name, poster_path, episode_count, air_date, season_number } = season;
 
   const year = air_date ? ` ${getYearFromDate(air_date || '')}` : '';
   const secondaryText = `${year} • ${episode_count} Episodes`;
 
   return (
-    <Link className="remove-text-decoration" href={`/tv/${tvId}/season/${season.season_number}`}>
+    <Link className="remove-text-decoration" href={`/tv/${tvId}/season/${season_number}`}>
       <Card className={classes.poster} shadow="sm" padding="xs" radius="md" withBorder>
         <Card.Section>
           <Image src={getImgPath(poster_path, 'w130_and_h195_bestv2')} width={150} height={225} alt={name} />

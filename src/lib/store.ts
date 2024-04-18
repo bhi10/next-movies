@@ -4,11 +4,12 @@ import configSlice from './features/Config/configSlice';
 import trendingSlice from './features/Home/trendingSlice';
 import movieSlice from './features/Movie/movieSlice';
 import peopleSlice from './features/People/peopleSlice';
+import episodeSlice from './features/Tv/Episode/episodeSlice';
+import seasonSlice from './features/Tv/Season/seasonSlice';
 import tvSlice from './features/Tv/tvSlice';
 import imagesSlice from './features/imagesSlice';
-import seasonSlice from './features/Tv/Season/seasonSlice';
 
-const rootReducer = combineSlices(appSlice, trendingSlice, peopleSlice, configSlice, movieSlice, tvSlice, imagesSlice, seasonSlice);
+const rootReducer = combineSlices(appSlice, trendingSlice, peopleSlice, configSlice, movieSlice, tvSlice, imagesSlice, seasonSlice, episodeSlice);
 
 export const makeStore = () => {
   return configureStore({

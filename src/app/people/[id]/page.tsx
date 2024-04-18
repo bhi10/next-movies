@@ -45,6 +45,8 @@ function People({ params }: PeopleProps) {
           label="Profile"
           slideSize={{ base: '100%', sm: '25%', md: '12.5%' }}
           slideGap={{ base: 0, sm: 'md' }}
+          loop
+          showCount
         ></ImagesCarousel>
       </Container>
     </Flex>

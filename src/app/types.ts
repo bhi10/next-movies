@@ -484,4 +484,5 @@ export type ImageSizes =
   | 'w1066_and_h600_bestv2'
   | 'w150_and_h225_bestv2'
   | 'w440_and_h660_face'
-  | 'w130_and_h195_bestv2';
+  | 'w130_and_h195_bestv2'
+  | 'w1000_and_h563_face';
