@@ -6,6 +6,7 @@ import { useAppDispatch } from '@lib/hooks';
 import { Carousel } from '@mantine/carousel';
 import { Image, MantineSpacing, StyleProp, Title } from '@mantine/core';
 import { getImgPath } from '@utils/common-utils';
+import React from 'react';
 
 interface ImagesCarouselProps<T, K extends keyof T> {
   images: T[] | undefined;
@@ -50,8 +51,9 @@ function ImagesCarousel<T, K extends keyof T>({
       </Carousel.Slide>
     );
   });
+
   return (
-    <>
+    <React.Fragment>
       {label ? (
         <Title order={4} mt="sm" mb="sm">
           {label} {showCount ? `(${images.length})` : null}
@@ -60,7 +62,7 @@ function ImagesCarousel<T, K extends keyof T>({
       <Carousel slideSize={slideSize} slideGap={slideGap} align={align} dragFree={dragFree} loop={loop}>
         {slides}
       </Carousel>
-    </>
+    </React.Fragment>
   );
 }
 

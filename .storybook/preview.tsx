@@ -1,12 +1,12 @@
-import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
-import React, { useEffect } from 'react';
-import { addons } from '@storybook/preview-api';
-import { DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
 import { MantineProvider, useMantineColorScheme } from '@mantine/core';
-import { theme } from '../src/theme';
-import '../src/app/globals.css';
+import '@mantine/core/styles.css';
+import { addons } from '@storybook/preview-api';
+import React, { useEffect } from 'react';
+import { DARK_MODE_EVENT_NAME } from 'storybook-dark-mode';
 import StoreProvider from '../src/app/StoreProvider';
+import '../src/app/globals.css';
+import { theme } from '../src/theme';
 
 const channel = addons.getChannel();
 
@@ -26,7 +26,9 @@ export const decorators = [
   (renderStory: any) => <ColorSchemeWrapper>{renderStory()}</ColorSchemeWrapper>,
   (renderStory: any) => (
     <StoreProvider>
-      <MantineProvider theme={theme}>{renderStory()}</MantineProvider>
+      <MantineProvider theme={theme}>
+        <div style={{ height: '97vh', overflow: 'scroll' }}>{renderStory()}</div>
+      </MantineProvider>
     </StoreProvider>
   ),
 ];

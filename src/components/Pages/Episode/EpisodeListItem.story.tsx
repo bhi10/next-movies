@@ -9,7 +9,7 @@ const meta: Meta<typeof EpisodeListItem> = {
 export default meta;
 type Story = StoryObj<typeof EpisodeListItem>;
 
-export const Oppenheimer: Story = {
+export const Default: Story = {
   args: {
     episode: {
       air_date: '2021-06-09',

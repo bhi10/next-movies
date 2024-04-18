@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { CastMember } from '@lib/features/Movie/types';
 import CastCarousel from './CastCarousel';
 
 const meta: Meta<typeof CastCarousel> = {
@@ -8,10 +9,14 @@ const meta: Meta<typeof CastCarousel> = {
 
 export default meta;
 
-type Story = StoryObj<typeof CastCarousel>;
+type Story = StoryObj<typeof CastCarousel<CastMember, keyof CastMember, keyof CastMember, keyof CastMember, keyof CastMember>>;
 
 export const Default: Story = {
   args: {
+    id_path: 'id',
+    profile_path: 'profile_path',
+    name_path: 'name',
+    character_path: 'character',
     casts: [
       {
         adult: false,

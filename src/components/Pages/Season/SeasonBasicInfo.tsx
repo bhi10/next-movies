@@ -21,7 +21,7 @@ function SeasonBasicInfo({ season, language = '' }: SeasonBasicInfoProps) {
 
   return (
     <Container fluid className={classes.header}>
-      <Poster poster_path={poster_path} title={season.name}></Poster>
+      <Poster poster_path={poster_path} title={name}></Poster>
       <div className={classes.headerDetail}>
         <Title order={2} className={classes.title}>
           {name}
