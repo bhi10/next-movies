@@ -18,7 +18,7 @@ function EpisodeListItem({ episode, tvId, seasonNo }: EpisodeListItemProps) {
     <Link className="remove-text-decoration" href={`/tv/${tvId}/season/${seasonNo}/episode/${episode_number}`}>
       <Card p={0}>
         <Flex gap={12}>
-          <img src={getImgPath(still_path, 'w1000_and_h563_face')} width={400} alt={name} />
+          <img src={getImgPath(still_path, 'w300')} width={300} height={169} alt={name} />
           <div style={{ paddingTop: '16px' }}>
             <Tooltip label={name}>
               <Title order={4} className={classes.title} mb={8}>

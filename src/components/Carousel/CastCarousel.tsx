@@ -8,6 +8,7 @@ interface CastCarouselProps<T, K extends keyof T, L extends keyof T, M extends k
   profile_path: L;
   name_path: M;
   character_path: N;
+  label?: string;
   gap?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
 
@@ -17,6 +18,7 @@ export default function CastCarousel<T, K extends keyof T, L extends keyof T, M 
   profile_path,
   name_path,
   character_path,
+  label = 'Top Cast',
   gap = 'md',
 }: CastCarouselProps<T, K, L, M, N>) {
   if (!casts || casts.length === 0) return '';
@@ -33,7 +35,7 @@ export default function CastCarousel<T, K extends keyof T, L extends keyof T, M 
   return (
     <>
       <Title order={4} mt="sm" mb="sm">
-        Top Cast
+        {label}
       </Title>
       <HorizontalScroller gap={gap}>{slides}</HorizontalScroller>
     </>

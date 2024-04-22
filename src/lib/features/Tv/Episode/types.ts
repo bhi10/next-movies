@@ -26,7 +26,7 @@ interface EpisodeCrew {
   name: string;
   original_name: string;
   popularity: number;
-  profile_path: string;
+  profile_path: string | null;
 }
 
 interface EpisodeGuestStars {
@@ -40,7 +40,7 @@ interface EpisodeGuestStars {
   name: string;
   original_name: string;
   popularity: number;
-  profile_path: string;
+  profile_path: string | null;
 }
 
 interface EpisodeImages {

@@ -27,7 +27,9 @@ export const decorators = [
   (renderStory: any) => (
     <StoreProvider>
       <MantineProvider theme={theme}>
-        <div style={{ height: '97vh', overflow: 'scroll' }}>{renderStory()}</div>
+        <div style={{ height: '97vh', overflow: 'scroll' }}>
+          <div>{renderStory()}</div>
+        </div>
       </MantineProvider>
     </StoreProvider>
   ),

@@ -24,7 +24,7 @@ export const directorDetails = (crew: CrewMember[] | undefined): CrewMember[] =>
 };
 
 export const getImgPath = (path: string | null, size: ImageSizes = 'original'): string => {
-  if (!path) return '';
+  if (!path) return '/no-image.svg';
   return apiImgUrl + '/' + size + path;
 };
 
