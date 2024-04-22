@@ -14,13 +14,11 @@ export interface TvBasicInfoProps {
 }
 
 function TvBasicInfo({ media, language = '' }: TvBasicInfoProps) {
-  if (!media) {
-    return '';
-  }
+  if (!media) return null;
 
-  const directors = media && media.credits && directorDetails(media.credits.crew);
-
-  const { name, first_air_date, status, genres, spoken_languages, overview } = media;
+  const { name, first_air_date, status, genres, spoken_languages, overview, credits } = media;
+  const { crew } = credits;
+  const directors = media && media.credits && directorDetails(crew);
   const year = first_air_date ? ` (${getYearFromDate(first_air_date || '')})` : '';
 
   return (

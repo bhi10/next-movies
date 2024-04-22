@@ -18,8 +18,9 @@ function MovieBasicInfo({ media, language = '' }: MovieBasicInfoProps) {
     return '';
   }
 
-  const directors = media && media.credits && directorDetails(media.credits.crew);
-  const { title, status, release_date, genres, spoken_languages, budget, revenue, overview } = media;
+  const { title, status, release_date, genres, spoken_languages, budget, revenue, overview, credits } = media;
+  const { crew } = credits;
+  const directors = media && media.credits && directorDetails(crew);
   const year = release_date ? ` (${getYearFromDate(release_date || '')})` : '';
 
   return (
