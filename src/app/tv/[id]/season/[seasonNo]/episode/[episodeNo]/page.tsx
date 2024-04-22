@@ -1,10 +1,11 @@
 'use client';
 
+import CastCarousel from '@components/Carousel/CastCarousel';
 import ImagesCarousel from '@components/Carousel/ImagesCarousel';
+import EpisodeBasicInfo from '@components/Pages/Episode/EpisodeBasicInfo';
 import { episodeDetail, getEpisode } from '@lib/features/Tv/Episode/episodeSlice';
 import { useAppDispatch, useAppSelector } from '@lib/hooks';
 import { Container, Flex } from '@mantine/core';
-import { getImgPath } from '@utils/common-utils';
 import { useEffect } from 'react';
 
 export interface EpisodeProps {
@@ -23,14 +24,21 @@ function Episode({ params }: EpisodeProps) {
 
   if (!episode) return null;
 
-  const { name, still_path, images } = episode;
+  const { images, guest_stars, crew } = episode;
 
   return (
     <Flex direction="column" pb={32}>
-      <Container fluid className="">
-        <img src={getImgPath(still_path, 'w1000_and_h563_face')} title={name}></img>
-      </Container>
+      <EpisodeBasicInfo episode={episode}></EpisodeBasicInfo>
       <Container fluid style={{ width: '100%' }}>
+        <CastCarousel
+          label="Guest Stars"
+          casts={guest_stars}
+          id_path="id"
+          profile_path="profile_path"
+          name_path="name"
+          character_path="character"
+        ></CastCarousel>
+        <CastCarousel label="Crew" casts={crew} id_path="id" profile_path="profile_path" name_path="name" character_path="job"></CastCarousel>
         <ImagesCarousel label="Backdrops" images={images?.stills} path="file_path" imageSizes="w1066_and_h600_bestv2" loop showCount></ImagesCarousel>
       </Container>
     </Flex>
