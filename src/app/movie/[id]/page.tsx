@@ -31,17 +31,15 @@ function MediaMovie({ params }: MediaMovieProps) {
 
   if (!movie) return '';
 
+  const { credits, recommendations, similar } = movie;
+  const { cast, crew } = credits;
+
   return (
     <Flex direction="column" pb={32}>
       <MovieBasicInfo media={movie} language={lang?.english_name}></MovieBasicInfo>
       <Container fluid style={{ width: '100%' }}>
-        <CastCarousel
-          casts={movie?.credits?.cast || []}
-          id_path="id"
-          profile_path="profile_path"
-          name_path="name"
-          character_path="character"
-        ></CastCarousel>
+        <CastCarousel casts={cast} id_path="id" profile_path="profile_path" name_path="name" character_path="character"></CastCarousel>
+        <CastCarousel label="Crew" casts={crew} id_path="id" profile_path="profile_path" name_path="name" character_path="job"></CastCarousel>
         <ImagesCarousel
           label="Backdrops"
           images={images?.backdrops}
@@ -61,7 +59,7 @@ function MediaMovie({ params }: MediaMovieProps) {
           showCount
         ></ImagesCarousel>
         <RecommendationsCarousel
-          recommendations={movie.recommendations?.results}
+          recommendations={recommendations?.results}
           media_type={media_type}
           poster_path="poster_path"
           release_date_path="release_date"
@@ -70,7 +68,7 @@ function MediaMovie({ params }: MediaMovieProps) {
         ></RecommendationsCarousel>
         <RecommendationsCarousel
           title="Similar"
-          recommendations={movie.similar?.results}
+          recommendations={similar?.results}
           media_type={media_type}
           poster_path="poster_path"
           release_date_path="release_date"

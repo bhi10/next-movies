@@ -32,7 +32,7 @@ export interface MediaTv {
   vote_average: number;
   vote_count: number;
   images?: TvImages;
-  credits?: Credits;
+  credits: Credits;
   recommendations?: Recommendations;
   similar?: Similar;
 }

@@ -26,6 +26,11 @@ export const Oppenheimer: Story = {
           name: 'History',
         },
       ],
+      credits: {
+        id: 12321,
+        crew: [],
+        cast: [],
+      },
       homepage: 'http://www.oppenheimermovie.com',
       id: 872585,
       imdb_id: 'tt15398776',

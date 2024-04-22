@@ -25,7 +25,7 @@ export interface MediaMovie {
   vote_average: number;
   vote_count: number;
   images?: MoviesImages;
-  credits?: Credits;
+  credits: Credits;
   recommendations?: Recommendations;
   similar?: Similar;
 }
