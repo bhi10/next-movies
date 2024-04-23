@@ -11,6 +11,7 @@ import { getTv, tvDetail } from '@lib/features/Tv/tvSlice';
 import { getImages } from '@lib/features/imagesSlice';
 import { useAppDispatch, useAppSelector } from '@lib/hooks';
 import { Container, Flex } from '@mantine/core';
+import { combineObjects } from '@utils/common-utils';
 import { useEffect } from 'react';
 
 interface MediaProps {
@@ -35,12 +36,14 @@ function Media({ params }: MediaProps) {
   const { seasons, credits } = tv;
   const { cast, crew } = credits;
 
+  const filteredCrew = combineObjects(crew, 'id', ['job']);
+
   return (
     <Flex direction="column" pb={32}>
       <TvBasicInfo media={tv} language={lang?.english_name}></TvBasicInfo>
       <Container fluid style={{ width: '100%' }}>
         <CastCarousel casts={cast} id_path="id" profile_path="profile_path" name_path="name" character_path="character"></CastCarousel>
-        <CastCarousel label="Crew" casts={crew} id_path="id" profile_path="profile_path" name_path="name" character_path="job"></CastCarousel>
+        <CastCarousel label="Crew" casts={filteredCrew} id_path="id" profile_path="profile_path" name_path="name" character_path="job"></CastCarousel>
         <SeasonCardCarousel tvId={tv.id} seasons={seasons}></SeasonCardCarousel>
         <ImagesCarousel
           label="Backdrops"

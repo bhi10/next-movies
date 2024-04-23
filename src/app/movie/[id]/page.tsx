@@ -10,6 +10,7 @@ import { getMovie, movieDetail } from '@lib/features/Movie/movieSlice';
 import { getImages } from '@lib/features/imagesSlice';
 import { useAppDispatch, useAppSelector } from '@lib/hooks';
 import { Container, Flex } from '@mantine/core';
+import { combineObjects } from '@utils/common-utils';
 import { useEffect } from 'react';
 
 export interface MediaMovieProps {
@@ -34,12 +35,14 @@ function MediaMovie({ params }: MediaMovieProps) {
   const { credits, recommendations, similar } = movie;
   const { cast, crew } = credits;
 
+  const filteredCrew = combineObjects(crew, 'id', ['job']);
+
   return (
     <Flex direction="column" pb={32}>
       <MovieBasicInfo media={movie} language={lang?.english_name}></MovieBasicInfo>
       <Container fluid style={{ width: '100%' }}>
         <CastCarousel casts={cast} id_path="id" profile_path="profile_path" name_path="name" character_path="character"></CastCarousel>
-        <CastCarousel label="Crew" casts={crew} id_path="id" profile_path="profile_path" name_path="name" character_path="job"></CastCarousel>
+        <CastCarousel label="Crew" casts={filteredCrew} id_path="id" profile_path="profile_path" name_path="name" character_path="job"></CastCarousel>
         <ImagesCarousel
           label="Backdrops"
           images={images?.backdrops}

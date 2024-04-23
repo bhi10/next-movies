@@ -21,9 +21,9 @@ export default function CastCarousel<T, K extends keyof T, L extends keyof T, M 
   label = 'Top Cast',
   gap = 'md',
 }: CastCarouselProps<T, K, L, M, N>) {
-  if (!casts || casts.length === 0) return '';
+  const filteredCasts = casts && casts.filter(cast => cast[profile_path] as string);
+  if (!filteredCasts || filteredCasts.length === 0) return null;
 
-  const filteredCasts = casts.filter(cast => cast[profile_path] as string);
   const slides = filteredCasts.map((cast, index) => {
     const id = cast[id_path] as number;
     const profileImagePath = cast[profile_path] as string;
@@ -32,6 +32,7 @@ export default function CastCarousel<T, K extends keyof T, L extends keyof T, M 
 
     return <Cast key={index} id={id} profile_path={profileImagePath} name={name} character={character} />;
   });
+
   return (
     <>
       <Title order={4} mt="sm" mb="sm">

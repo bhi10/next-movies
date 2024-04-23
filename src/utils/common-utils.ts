@@ -20,7 +20,10 @@ export const formatMovieDuration = (durationInMinutes: number | undefined): stri
 
 export const directorDetails = (crew: CrewMember[] | undefined): CrewMember[] => {
   if (!crew) return [];
-  return crew.filter(member => member.job === 'Director');
+  const directors = crew.filter(member => member.job === 'Director');
+  crew = crew.filter(e => directors.findIndex(f => f.id === e.id) > -1);
+  crew = combineObjects(crew, 'id', ['job', 'department']);
+  return crew;
 };
 
 export const getImgPath = (path: string | null, size: ImageSizes = 'original'): string => {
@@ -136,4 +139,25 @@ export const removeDuplicateIds = <T, K extends keyof T>(array: T[], key: K): T[
 
   // Return the values from the map (which will be unique objects)
   return Array.from(keyMap.values());
+};
+
+export const combineObjects = <T, K extends keyof T, L extends keyof T>(arr: T[], idKey: K, combineKeys: L[]): T[] => {
+  const combinedMap = new Map<any, Partial<T>>();
+  arr.forEach(obj => {
+    const id = obj[idKey];
+    if (!combinedMap.has(id)) {
+      combinedMap.set(id, { ...obj });
+    } else {
+      const existingObj = combinedMap.get(id)!;
+      combineKeys.forEach(key => {
+        if (existingObj[key]) {
+          existingObj[key] = `${existingObj[key]}, ${obj[key]}` as any;
+        } else {
+          existingObj[key] = obj[key];
+        }
+      });
+    }
+  });
+
+  return Array.from(combinedMap.values()) as T[];
 };
