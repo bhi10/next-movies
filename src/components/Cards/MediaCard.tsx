@@ -1,21 +1,19 @@
 import { TrendingMedia } from '@app/types';
-import { BackgroundImage, Paper, Text, Title } from '@mantine/core';
+import { Paper, Text, Title } from '@mantine/core';
 import { getImgPath } from '@utils/common-utils';
 import Link from 'next/link';
 import classes from './MediaCard.module.css';
 
-// TODO: linear-gradient(180deg, rgba(15,15,15,0.14) 0%, rgba(18,17,17,0.71) 100%)
-
 export default function MediaCard({ media }: { media: TrendingMedia }) {
+  const bgImage = `linear-gradient(to right,rgb(4,28,50,.8),rgb(4,41,58,.4)),url('${getImgPath(media.backdrop_path, 'w1066_and_h600_bestv2')}')`;
   return (
     <Link className="remove-text-decoration" href={`${media.media_type}/${media.id}`}>
-      <BackgroundImage
-        src={getImgPath(media.backdrop_path, 'w1066_and_h600_bestv2')}
+      <Paper
         className={classes.card}
         radius="md"
         p="xl"
         style={{
-          backgroundImage: `linear-gradient(180deg, rgba(15,15,15,0.14) 0%, rgba(18,17,17,0.71) 100%)`,
+          backgroundImage: bgImage,
           backgroundSize: 'cover',
         }}
       >
@@ -25,7 +23,7 @@ export default function MediaCard({ media }: { media: TrendingMedia }) {
         <Title order={3} className={classes.title}>
           {media.media_type === 'movie' ? media.title : media.name}
         </Title>
-      </BackgroundImage>
+      </Paper>
     </Link>
   );
 }

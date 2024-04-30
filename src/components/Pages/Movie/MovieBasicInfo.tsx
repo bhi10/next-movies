@@ -6,6 +6,7 @@ import { MediaMovie } from '@lib/features/Movie/types';
 import { Container, Divider, Flex, SimpleGrid, Text, Title } from '@mantine/core';
 import { directorDetails, formatMovieDuration, getImgPath, getYearFromDate, moneyFormat } from '@utils/common-utils';
 import Link from 'next/link';
+import React from 'react';
 import classes from './MovieBasicInfo.module.css';
 
 export interface MovieBasicInfoProps {
@@ -18,7 +19,7 @@ function MovieBasicInfo({ media, language = '' }: MovieBasicInfoProps) {
     return '';
   }
 
-  const { title, status, release_date, genres, spoken_languages, budget, revenue, overview, credits } = media;
+  const { title, status, release_date, genres, spoken_languages, budget, revenue, overview, credits, runtime } = media;
   const { crew } = credits;
   const directors = media && media.credits && directorDetails(crew);
   const year = release_date ? ` (${getYearFromDate(release_date || '')})` : '';
@@ -45,10 +46,14 @@ function MovieBasicInfo({ media, language = '' }: MovieBasicInfoProps) {
 
         <Flex mt={4} align="center" gap={8}>
           {release_date && <DateDisplay date={release_date} size="xs" c={`gray.5`}></DateDisplay>}
-          {release_date && <Divider orientation="vertical" color="gray.5"></Divider>}
-          <Text span size="xs" c={`gray.5`}>
-            {formatMovieDuration(media.runtime)}
-          </Text>
+          {release_date && runtime ? (
+            <React.Fragment>
+              <Divider orientation="vertical" color="gray.5"></Divider>
+              <Text span size="xs" c={`gray.5`}>
+                {formatMovieDuration(media.runtime)}
+              </Text>
+            </React.Fragment>
+          ) : null}
         </Flex>
 
         {media.tagline ? (
