@@ -6,6 +6,7 @@ import AppImageViewer from '@components/Pages/Home/AppImageViewer';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 import AppDataProvider from './AppDataProvider';
+import BasicAppShell from '@components/AppShell/BasicAppShell';
 
 export interface AppProps {
   children: React.ReactNode;
@@ -17,11 +18,9 @@ function App({ children }: AppProps) {
   return (
     <React.Fragment>
       <AppDataProvider></AppDataProvider>
-      <Navbar pathName={pathName}></Navbar>
-      <div className="page-wrapper">
-        <Header></Header>
-        {children}
-      </div>
+      <BasicAppShell pathName={pathName}>
+        <div className="page-wrapper">{children}</div>
+      </BasicAppShell>
       <AppImageViewer></AppImageViewer>
     </React.Fragment>
   );
