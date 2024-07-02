@@ -1,12 +1,10 @@
 'use client';
 
-import Header from '@components/AppShell/Header';
-import Navbar from '@components/AppShell/Navbar';
+import BasicAppShell from '@components/AppShell/BasicAppShell';
 import AppImageViewer from '@components/Pages/Home/AppImageViewer';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 import AppDataProvider from './AppDataProvider';
-import BasicAppShell from '@components/AppShell/BasicAppShell';
 
 export interface AppProps {
   children: React.ReactNode;
