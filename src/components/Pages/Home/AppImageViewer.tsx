@@ -17,7 +17,7 @@ function AppImageViewer() {
   if (!images || images.length === 0) return null;
 
   return (
-    <div>
+    <div style={{ zIndex: 9999 }}>
       {isViewerOpen && (
         <ImageViewer src={images} currentIndex={currentImage} disableScroll={true} closeOnClickOutside={true} onClose={onCloseImageViewer} />
       )}
